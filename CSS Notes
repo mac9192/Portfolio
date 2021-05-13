@@ -1,0 +1,485 @@
+
+
+How CSS Works: A look Behind the Scenes
+
+
+Three Pillars of Writing Good Code in HTML and CSS (Never forget them!):
+------------------------------------------------------------------------
+
+
+1. Responsive Design - Build website that works beautifully across all screen sizes, across all devices. 
+
+     - Fundamentals of Advanced Web Deisgn: (Fluid layouts, Media queries, Responsove Images, Correct Units, Desktop first vs mobiel-first)
+     -
+
+
+2. Writing Maintainable and Scalabe Code - 
+
+     - Code: (Clean, easy-to-understand, growth, reusable, how to organize files, how to names classes, how to structure HTML)
+     -
+
+
+3. Caring About Web Performamce - 
+
+     - Making it smaller, faster: (Less HTTP requests, less code, compress code, use a CSS preprocessor, less images, compress images)
+        
+
+
+** What happens to CSS  in the browser when we load up a Webpage? **
+
+    -   Broswer loads Html file --> Browser takes the HTML and parses it (it decodes code line-by-line) --> Browser then creates the Document-Object-Model (desrcibes the object like a family tree with parents,  
+        children, sibling elements) (DOM): Where the entire decoded element is stored. 
+
+    -   Along with the parsed HTML, CSS is parsed as well.
+            - Two Steps: (1) Resolve conflicting CSS declarations (cascade)... (2) Process final CSS values i.e changing pixels to percentages, mobile vs web. --> Everything is stored in CSS Object Model (CSSOM)
+
+    -   When both are parsed,they form the 'Render Tree' --> Website rendering: the visual formatting model --> Final Rendered Website
+
+
+
+** CSS Terminology **
+
+
+(selector)
+.my-class {
+
+(Declaration block)
+    color:blue;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+    -   Cascade: Process of combining different stylesheets and resolving conflicts between different CSS rules and declarations, when more than one rule applies to a certain element. 
+            - How does Cascade actually resolve conflict when more than one rule applies?
+                - Priorities:   Importance --> Specificity --> Source Order in order to determine which one takes precedence. 
+                    
+    
+    - Prorities Explained:
+        Importance:     1. User !important declarations             ex: .button { font-size:20px; background-color: blue !important} This declaration gets precedence over an element that would also contain that same background color. 
+                        2. Author !important declarations
+                        3. Author declarations
+                        4. User declarations
+                        5. Default browser declarations
+
+    - If there is still values that are of same importance it goes to Specificity    (look up difference, I forgot) 
+        Specificity:    1. Inline style 
+                        2. IDs
+                        3. Classes, pseudo-classes, attribute
+                        4. Elements, pseudo-elements 
+
+
+                                                                    .button {                               Inline  IDs Classes Elements           You start from left to right in counting
+                                                                       
+                                                                        font-size: 20px;                    
+                                                                        color: white;                       (   0     0     1       0   )           Gone 1st: no ID
+                                                                        background-color: blue; 
+                                                                    }
+
+                                                                    nav#nav div.pull-right .button {        (   0     1      2      2   )           Wins priority ;  It will give our button a green value. 
+                                                                        background-color: green;
+                                                                    }
+
+                                                                    a {
+                                                                        background-color: purple;           (   0     0      0      1   )          Gone 1st: no ID
+                                                                    }
+
+                                                                    #nav a.button:hover 
+                                                                        background-color: yellow;           (   0     1      2      1   )          Gone 2nd: only 1 element
+
+                                                                    }
+
+
+-  If there is still similarity after that such as ( 0 1 2 2 ) and ( 0 1 2 2 )it goes to Source Order
+        Source Order:   The last declaration in the code will override all other declarations and will be applied.
+
+
+
+** Cascade and Specificity Summary:
+    - CSS declarations marked with !important have the highest priority;
+    - But, only use !important as a last resource. It's better to use correct specificities - more maintainable code!
+    - Inline styles will always have priority over styles in external stylesheets;
+    - A selector that contains 1 ID is more specific than one with 1000 classes;
+    - A selector that contains 1 class is more specific than one with 1000 elements;
+    - The universal selector * has no specificity value ( 0 0 0 0 ), All other selectors have precedence over it;
+    - Rely more on specifiicty than on the order of selectors; (Gives you the ability to rearrange code in the future bc you are dealing with a higher priority selector)
+    - But, rely on order when using 3rd-party sytylesheets - always put your author stylesheet last.
+
+
+** CSS Value Processing Summary:
+    - Each property has an initial value, used if nothing is declared (and if there is no inheritance - see nect lecture);
+    - Browsers specify a root font-size for each page (usually 16px);
+    - Percentages and relatives values are always converted to pixels;
+    - Percentages are measured relative to their parent's font-size, if used to specify font-size. 
+    - Percentages are measures relative to their parent's width, if used to specify lengths;
+    - em are measured relative to their parent font-size, if used to specify font-size;
+    - em are measured relative to the current font-size, if used to specify lengths; 
+    - vh and vw are simply percentage measurements of the viewport's height and width. 
+
+
+** Inheritance Summary:
+    - Inheritance passes the value for some specific properties from parents to children - more maintainable code; (It allows to write easier codem because of inheritances to elements);
+    - Properties related to text are inherited: font-family, font-size, color, etc;
+    
+
+
+
+
+Converting PX to REM: An Effective Workflow:
+--------------------------------------------
+- How and why to use rem units in our projects;
+- A great workflow for converting px to rem. 
+
+    - Change all PX units to REM units.
+    - Why? We want an easy way to change our elements on our page with one simple setting, for example in mobile development we want a way to decrease all measurements at the same time. 
+    - REM unit is always related to the root font-size. If we set that root font-size, we can then very easily change the all the other measurements on our page to REM.
+
+Steps:
+    1. Change global font-size
+    2. Set root font-size in the HTML selector
+
+- This is great because you can then change the root zise and everything will go up or down proportionatly. 
+
+
+
+How CSS Renders a Website: The Visual Formatting Model
+-------------------------------------------------------
+
+** The CSS Visual Formatting Model: Algorithm that calculates boxes and determines the layout of theses boxes, for each element in the render tree, in order to determine the final layout page.
+    - It takes into account factors such as:
+        - Dimensions of boxes: the box model;
+        - Box type: inline, block and inline-block;
+        - Positioning Scheme: floats and positioning;
+        - Stacking contetxs;
+        - Other elements in the render tree;
+        - Viewport size, dimensions of images, etc. 
+        (By putting this all together the browser figures out the webpage will look to the user)
+
+
+1. The Box Model: Without a doubt one of the most fundamental parts of CSS. Its something you really need to master in order to layout a webpage. (How height and width are calculated.) (pic included)
+        - Box Model is one of the factors that define how elements are layed in a webpage and how they are sized. 
+        - According to the Box Model each and every element on a webpage can be seen as a rectangular box. 
+        - And each box can have a width, height, padding, margins, and border. (Pic in Notes Images file)
+        - Note that they can be optional. So know that some boxes with no margins or paddings at all.
+        
+            - Content: text, images, etc;
+            - Padding: transparent area around the content, inside of the box;
+            - Border: goes around the padding and the content;
+            - Margin: space between the boxes;
+            - Fill area: area that gets filled with background color or background image. (This is the area up until, but excluding the margin, so basically everything inside.)
+            - If we set box-sizing: border-box the height and the width will be defined by the entire box including the padding and the border. Total width = specified width. Total height = specified height. 
+
+2. Box Types: Inline, Block-Level, and Inline-Block .
+    - The type of box is always defined by the display property. 
+
+
+            Block-level Boxes:
+                - Elements formatted visually as blocks
+                - 100% of parent's width
+                - Vertically, one after another
+                - Block level box will occupy as much space as possible, which is 100% of its parent's width. And creates line breaks after and before it, meaning that blocks are formatted vertically one after another. 
+                - Box-model applies as showed:
+                    
+                    display: block
+                   (display: flex)
+                   (display: list-item)
+                   (display: table)
+
+            
+            Inline-Boxes:
+                - Opposite of block level boxes meaning that it only occupies the space that its content actually needs. Therefore, the just sit inside the parent block element. 
+                - Content is distributed in lines
+                - Occupies only content's space
+                - No line-breaks
+                - No height and widths
+                - Defines only paddings and margins only horizontal (left and right)
+
+                    display: inline
+
+            Inline-Block Boxes:
+                - Inline-block is technically like Inline-Boxes, but simply work as a block level box on the inside.
+                - Since technically they are inline elements, they only use up their content space and cause no line breaks.
+                - A mix of block and inline
+                - Occupies only content's space
+                - No line-breaks
+                - Box-model applies as showed
+
+                    display: inline-block
+
+3. Positioining Schemes: Normal Flow, Absolute Positioning, and floats
+
+            Normal Flow:
+                - Default positioning Scheme
+                - Not floated
+                - Not absolutely positioned
+                - Elements laid out according to their source order.
+
+                    Default
+                    position: relative 
+
+            
+            Floats:
+                - Element is removed from the normal Flow
+                - Text and inline elements will wrap around the floated element
+                - The cobtainer will not adjust its height to the element
+                - Taken to left or right, as far as possible, until it touches the edge of its containg box, or another floated element. 
+
+                    float: left
+                    float: right 
+
+        
+
+            Absolute Positioning:
+                - Element is removed from the normal Flow
+                - No impact on surrounding content or elements
+                - We use top, bottom, left and right to offset the element from its relatively positioned container.
+                - It can overlap other elements occupying the same space 
+
+                    position: absolute
+                    position: fixed
+
+4. Stacking Contexts: Which order elements are rendered on the page. 
+
+            Layer 1 | Layer 2 | Layer 3
+
+                (One way to tell which elements are rendered first, you can use the z-index.)
+                (The one with the highest z element goes on top, lowest index appears at the bottom)
+                (An opacity value different from one, transform, filter, or other properties can also create new stacking contexts, thats why sometimes Z-index may not work properly)
+
+                    z-index: 3
+                    position: relative
+
+                    z-index: 2
+                    position: absolute
+
+                    z-index: 1
+                    position: relative
+
+
+
+CSS Architecture, Components, and BEM (CSS Architecture and how we should think about layouts)
+--------------------------------------------------------------------------------------------
+- The website we want must have:  Responsive Design | Maintainable and Scalable Code | Web Performance   (Clean, Modular, Reusable, Ready for Growth)
+- We must plan the development from the start.
+- A good Strategy:  Think | Build | Architecture
+                    
+        - Think: Think about the layout of your webpage or web app before writing code.
+        - Build: Build your layout in HTML and CSS with a consistent structure for naming classes.
+        - Architect: Create a logical architecture for your CSS with files and folder
+
+                    Think: (Using Component-Driven Design)
+                        - Modular building blocks that make up interfaces. Divide into modular components. Building-blocks.
+                        - Held together by the layout of the page
+                        - Re-usable across a project, and between different projects(Really important)---You can create a library, and then reuse them across projects. BAM!
+                        - Independent, allowing us to use them anywhere on the page. (What this means a component should not depend on their parent elements)
+                        - This will allow your code to be easier to maintain and to scale if neccessary
+                    
+                    Build: Strategy for marking up layouts
+                        - (BEM) Block Element Modifier 
+                        - BLOCK: standalone component that is meaningful on its own
+                        - ELEMENT: part of a block that has no standalone meaning. 
+                        - MODIFIER: a different version of a block or an element 
+                        - Picture included in images. Basically its the structure to create a component with elements inside that can be reused. 
+
+
+                              Low-Specificity BEM selectors:
+
+                                .block {}
+                                .block__element {}
+                                .block__element--modifier {}
+                    
+                    Architect: (Creating logical file folder and structure for CSS to live in)
+                        - The 7-1 Pattern:
+                                - 7 different folders for partial Sass files and 1 main Sass file to import all other files into a compiled CSS stylesheet:
+                                        - base/  (Basic Project defintions)
+                                        - components/  (1 file for each component)
+                                        - layout/      (Defines overall layout of the project)
+                                        - pages/       (Styles for specific pages of the project)
+                                        - themes/      (If you want to implement different visual themes)
+                                        - abstracts/   (Where we put code that does not output any CSS such as variables)
+                                        - vendors/     (Where all 3rd party CSS goes)
+
+                
+
+
+SASS
+________________________________________________________________________________________________________________________________________
+
+- SASS is another way of wrting CSS code but better, more structured. 
+
+
+
+    
+    HTML
+    ______                                                                
+                                                                         
+<nav >      //clearfix
+    <ul class="navigation">                                             
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Pricing</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+    <div class="button">
+        <a class="btn-main" href="#">Sign Up </a>
+        <a class="btn-hot" href="#">Get a quote</a>
+    </div>
+</nav>
+
+                   
+    SASS
+    ________                        * Sidenote, any programmer that uses floats also uses clearfix to fix the background issue problem.         .clearfix::after{ content: "";}
+
+    * {
+        margin: 0,
+        padding: 0;
+    }
+    $color-primary: #f9ed69;                //yellow color... $ dollar sign defines variables. 
+    $color-secondary: #f08a5d;              //orange
+    $color-tertiary: #b83b5e;               //pink
+
+    @mixin clearfix{                         //Since we first had that background color for the whole dev, it essentially collapses when you FLOAT the elements inside which were (About Us, Pricing, Contact) and the buttons. So basically 
+
+        &::after {
+        content: "";
+        clear: both;                         //Since we first had that background color for the whole dev, it essentially collapses when you FLOAT the elements inside which were (About Us, Pricing, Contact) and the buttons. So basically 
+        display: table;
+      }
+     }
+
+    nav {                                   //nav is the entire component, per se <nav> </nav> 
+         margin: 30px;
+         background-color: $color-primary;   //used from the variable, now you can use that variable wherever you want. This will color everything inside the nav dev that holds everything.
+    
+       @include clearfix; Includes the clearfix corrector thing for floats.
+                             //Since we first had that background color for the whole dev, it essentially collapses when you FLOAT the elements inside which were (About Us, Pricing, Contact) and the buttons. So basically 
+
+    
+    .navigation {
+        list-style: none;
+
+        li {                                //You can use SASS to nest things. For instance, now you can modify the li inside the .navigation. Brings them all to the same line
+            display: inline-block;
+            margin-left: 30px;
+
+            &:first-child {                 //Basically this is a nest within a nest, This is a cool case because you can only impact one of the nodes from the About us, Pricing, and Contact nodes from the ul. It is baiscally .navigation li: first-child 
+             margin: 0;                     //brings the first node to the -30px from where it was. 
+            }
+
+            a: link{                        //Puts links under the nodes.
+             text-decoration: none;
+             text-transform: upper;         //Another nest within the SASS its equivalent would be .navigation li a  . Takes away the underline and makes all the nodes capitalizes because it is within .navigation, and within li so you can nest it.  
+             color: $color-text-pink;
+            }
+        }
+ }
+
+   
+    .buttons {
+        float: right;
+    }
+
+    %btn-placeholder{
+        padding: 10px;
+        display: inline-block;
+        text-alogn: center;
+        border-radius: 100px;
+        width: $width-button;
+        @include style-link-text($color-text-light);
+    }
+
+    .btn-main{
+        &:link{
+            @extend %btn-placeholder;
+            background-color: $color-secondary;,
+        }
+    }
+
+
+
+
+
+    Looks like:
+
+    
+    |ABOUT US   PRICING     Contact                                                                                   __Sign up__ __Get a Quote__|
+    |                                                                                                                                            |
+    |                                                                                                                                            |
+    |                                                                                                                                            |
+
+
+
+
+
+
+ - Mixins: is a reusable piece of code that we write to a mixin. That mixin can then be used and placed where you want to call it. 
+
+
+
+
+
+
+
+
+
+
+NPM Steps
+--------------------------------
+1)cd to folder 
+2)npm init - to create package.json file
+3)npm install node-sass --save-dev
+4)to recompile ==> npm run compile:sass  
+5) live-server
+
+unsplash.com for aesthetics pics
+
+
+
+Basic Principles of Responsive Design and Layout Types:
+________________________________________________________
+
+    1: Fluid Grids and Layouts: To allow content to easily adapt to the current width used to browse the website. Uses % rather than px for all layout-related lengths.
+    2. Flexible/Responsive Images: Images behave differently than text content, and so we need to ensure that they also adapt nicelt to the current viewport. 
+    3. Media Queries: To change styles on certain viewport widths (breakpoints), allowing us to create different version our website for different widths. 
+
+
+    - Layout Types: (In pictures)
+        1. Float Layouts - Putting a bunch of boxes side by side using FLOAT.2
+        2. FlexBox - Lays out boxes in a one dimensional row
+        3. CSS Grid - Perfect for laying out a full fledged 2D grid. 
+
+
+
+
+Building a Custom Grid with Floats:
+_______________________________________
+
+- What you will learn:
+    1) How to architect and build a simple grid system
+    2) How the attribute selector works
+    3) How the :not pseudo-class works
+    4) How calc() works, and what's the difference between calc() and simple Sass operations. 
+
+
+ - What is a grid: A grid is a design system which allows us to build consistent interfaces. (Picture in notes)
+    - Provides consistency in sizing and spacing amongsty them.
+    - A row is horizontal. Columns are the size of the individual interfaces/boxes or w/e.  
+
+
+
+About Section
+___________________________________________  
+
+What you will learn:
+
+    - Thinking about components
+    - How and why to use utility classes
+    - How to use the backgorund-clip property 
+    - How to transform multiple properties simultaneously
+    - How to use the outline-offset property together with outline
+    - How to style elements that are NOT hovered while others are 
+
+
+
+Media Querys
+---------------------------------------------
+ORDER: Base + typography > general layout + grid > page layout > components

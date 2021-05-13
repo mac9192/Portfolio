@@ -1,0 +1,73 @@
+/* This is for the photos */
+
+
+.composition{
+    position: relative;                                                                    /* The relative position of an absolute*/
+    
+    &__photo{                                                                              /* For JS, Angular, Node pics */
+
+        width: 55%;                                                                        /* Width of the pictures */
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);                       
+        border-radius: 2px;
+        position: absolute;                                                               /* If you want to use "absolute positioning" It will placed according to its parent relative aka "position releatvie"*/ /*top left coordinate will be in composition element */
+        z-index: 10;                                                                      /* In order to zoom on a hover set them to a z-index, one that is lower than the hover zoom one. */
+        transition: all .2s;                                                               /* This is for the hover effecr transform/ transition */
+        outline-offset: 2rem;                                                              /* Space between border and img */
+
+
+        @include respond(tab-port){
+            float: left;
+            position: relative;                                                           /* For the pictures (JS,Angular,etc) change the positioning to relative in order to move them side by side fro media querys */
+            width: 33.333333%;
+            box-shadow: 0 1.5rem 3rem rgba($color-black, .2) ;
+        }
+
+
+        &--p1 {
+            left: 0;                                                                      /* top left coordinate will be in composition element */
+            top: -2rem;
+
+            @include respond(tab-port){
+                top: 0;
+                transform: scale(1.2);
+            }
+
+        }
+   
+        &--p2 {
+            right: 0;                                                                      /* starts on right side, zero px from right side */
+            top: 2rem;
+
+            @include respond(tab-port){
+                top: -1rem;
+                transform: scale(1.3);
+                z-index: 100;
+            }
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+
+            @include respond(tab-port){
+                top: 1rem;
+                left: 0;
+                transform: scale(1.1);
+            }
+        }
+        
+    
+        &:hover{
+            outline: 1.5rem solid $color-primary;                                         /* Outline for border pop out */
+            transform: scale(1.05);                                                       /* When hovered over, increase the scale by 1.05 */ 
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);                             /* Increase box shadow too */ 
+            z-index: 20;                                                                  /* And have the z index higher than the default so that is brough to the forefront */
+        }
+ 
+    }
+
+    &:hover &__photo:not(:hover){                                                          /* composition then select picture that are not hovered */
+
+            transform: scale(.9);
+    }
+}

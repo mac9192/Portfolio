@@ -1,0 +1,717 @@
+/*
+
+List the CSS properties as the go on your HTML like they should be back to back.
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+/* Mixins are resuable bits of code that you can make and reuse throughout */
+/*--------------------------------------------------------------
+/*
+
+0 - 600px: Phone
+600 - 900px: Tablet Portrait
+900 - 1200px: Tablet Landscape
+[1200 - 1800] is where our normal styles apply
+1800+ : Big desktop
+
+*/
+/*@mixin respond-phone{
+    @media (max-width: 600px) { @content }; }                      /* { @content } allows us to pass a block of code into a mixin. */
+/*............................................................*/
+/*
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+Use (If directive)
+
+We use EM in media querys. 
+1em = 16px
+*/
+/* You can manipulate the size of the colums simply by changing variable values, pretty cool */
+/* Width = 114rem */
+/* Up and down space in between the columns */
+/* Side to side space in between the columns */
+@keyframes moveInLeft {
+  /* These types of animations are more complex, Use @keyframes rule, then name it. You can then dictate what you want it to do at any given time on animation. So you start with 0% and the finish is at 100% which is when the animation finishes.*/
+  0% {
+    /* For browser performance what you really ever want to do is only two different properties. One is Opacity and the other is the Transform property */
+    opacity: 0;
+    /* How do we want the element to look like at the beggining? We want it to be invisible, Opacity: 0;  */
+    transform: translateX(-10rem);
+    /* You want it to start more on the left than in the center so therefore, you have to negative the pixels on the X axis.  */ }
+  80% {
+    transform: translateX(1rem);
+    /* My name at the top start at -100px but ends a little further to the right of the original center, so therefore adding an increase of 120 (20px) from -100px initiitaion. */ }
+  100% {
+    opacity: 1;
+    /* You want it to reappear at the end so you make Opacity: 1, so that it can reappear. */
+    transform: translate(0);
+    /* How do you want it to look like at 100? You want it back in the middle where it was so therefore translate(0); */ } }
+
+@keyframes moveInRight {
+  /* You can grow crazy with rotations and other movements */
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+    /* To create the opposite animation for the bottom text, just reverse it so basically you want to start at 100px, a positive which moves right on X */ }
+  80% {
+    transform: translateX(-1rem);
+    /* Also, nudging it an extra 10 a little to the left so itll have that bounce outwards */ }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+/* Button animations: */
+@keyframes moveInBottom {
+  /* This is for the button that appears coming up when you reload with the text */
+  0% {
+    opacity: 0;
+    transform: translateY(3rem);
+    /* It is positive because on the Y scale it goes top down, so if you want to move down, it is a positive value */ }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+/* Basic definitions about our entire project */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /*  This will allow for the inheritance of all other objects from the declaration made now in the body section. **Better coding practice**                                           
+                                               /*  box-sizing: border-box; -> -> Move this border-box to the body section*/
+  /*  (*) Is for universal selector (it will apply to everything): Resets the appearnce to a browser, they can change in appearance */ }
+
+/* This defines what 1 rem is */
+/* Though we had all the typography methods moved to the typograhoy file, we leave this HTML typography here because it is used as a base for all the other typgraphyies and we can use it as a universal setting that effects others if switched */
+html {
+  /*  Set root font size in order to convert to REM */
+  font-size: 62.5%;
+  /* This right here defines what 1 REM is! root font-size */
+  /* Why 10 pixels? To make life easier. Now we know that 1 REM = 10 px ; 1 REM is equal exactly the root font-size. */
+  /*  Going by pixels for font-size is bad practice because it overrides the browser's default font size and then people that want to zoom can no longer zoom */
+  /*  So we then have to go by percentages, if you make it 100% then it would by default be 16px if the user wanted to change rootfont size to 18px then the root font size would be 18 px, and so on...
+                                                   But we dont want 16 px in this case, we want 10 px so in tis case, you would divide 10/16  =.625 Ex: .625*22(user changes root font size)  = 13.75 px */
+  /*@include respond(phone){                 /* Cancel this one out because the tab-port is the same argument.
+        font-size: 50%;
+    }
+    */
+  /* min width for big desktop */ }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+
+/*...........................................................ALL FONT SIZES WERE CHANGED TO REM so for example the padding pixel below was 30px now it is 3 REMS now..................................................*/
+body {
+  box-sizing: border-box;
+  /* Moved here from the universal declaration section. What this means is that box-sizing will now be declared in the body and it will then be inherited by all other objects through the inheritance of the universal declarations */
+  /* We moves the other typography CSS to typography and leave this known to be a box */
+  padding: 3rem;
+  /* Padding - is the thin border around the body edges.*/ }
+  @media (max-width: 56.25em) {
+    body {
+      padding: 0;
+      /* White border Padding is excluded on the phones. */ } }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size: 16px;         Commented out, new html font-size made for REM to px conversion */
+  line-height: 1.7;
+  color: gray;
+  /* The white border around the webpage */
+  /* HTML declarations changes this !!! = (declare font in the body element, it will be inherited by all child elements of the body.)*/ }
+
+.heading-primary {
+  /* Carries the shared properties of both the main and sub headings (top and bottom) */
+  color: white;
+  text-transform: uppercase;
+  /* text lowercase,uppercase, etc */
+  backface-visibility: hidden;
+  margin-bottom: 8rem;
+  /* For the space between Front End Developer and the button, it increases the bottom margin of the box therefore lowers it*/ }
+  .heading-primary--main {
+    /* To put these two texts one under another, is to display them as block level elements. Because block level elements occupy the entire width they have available, and most importantly in this case, they create line breaks, after and before them.*/
+    display: block;
+    /* a <span> is an inline element, so its just like text.  which is what this is. */
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 1rem;
+    /* Declare animation sequence here for the top: (primary-main) animation sequence. */
+    animation-name: moveInLeft;
+    /* Reference the animation name you are trying to use aka their properties) */
+    animation-duration: 2s;
+    /* How long it will last*/
+    animation-timing-function: ease-out;
+    /* Specifies how a CSS animation should progress over the duration of each cycle from moveInLeft, (ease-in): animation will start slower. (ease-out): animation will start fast and will become slower. Look up other animation timing functions online */
+    /* animation-delay: 3s; Delays the appearance when you refresh or arrive at the website 
+                                                   /* animation-iteration-count: 3; reiterates the animation sequence 3 times so basically animations the header name three times in a row.  */ }
+    @media (max-width: 37.5em) {
+      .heading-primary--main {
+        /* This decreases text size for phones */
+        letter-spacing: 1rem;
+        font-family: 5rem;
+        /* Decrease to 1 rem smaller */ } }
+  .heading-primary--sub {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 1.7rem;
+    /* This is for the second text positioning Remember you have to shift it to the left a little further so it can be centered because the text box got shifted a little to the left aka -50% or it'll start of in the dead center, making it look too on the right */
+    animation: moveInRight 2s ease-out;
+    /* nstead of specifying all the properties from the CSS above, animation-name, duration etc. just use animation: moveInRight */
+    backface-visibility: hidden; }
+    @media (max-width: 37.5em) {
+      .heading-primary--sub {
+        letter-spacing: .5rem; } }
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  /* By default, it will display as a "block" so it will take up the whole width, we must make it "in-line". */
+  background-image: linear-gradient(to right, #120c24fb, #240497);
+  /* This for the color transition of the H2, you have to make the background to color gradient. */
+  -webkit-background-clip: text;
+  color: transparent;
+  /* We make it transparent because by default it will be grey, or another color, but we want linear gradient so we make it transparent for the background color */
+  letter-spacing: .2rem;
+  transition: all .2s;
+  /* How fast will the effect be? */ }
+  .heading-secondary:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    /* This is the transition hover Y goes to the side x goes up and down scale is just to scale it a little 110%*/
+    text-shadow: 0.5rem 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* Shawdow text */ }
+  @media (max-width: 56.25em) {
+    .heading-secondary {
+      font-size: 2.5rem; } }
+  @media (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 2rem; } }
+
+.heading-tertiary {
+  /* Typography for the tertiary heading */
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase; }
+
+.paragraph {
+  /* Paragraph typography with font size and the margin at the last child doens not have a bottom margin */
+  font-size: 1.8rem; }
+  .paragraph:not(:last-child) {
+    margin-bottom: 3rem; }
+
+.u-center-text {
+  /* This is for the center Utility property for H2 text. Remember it was a block display but we changed it to inline meaning that you can move the property or text, box within the same parent block. */
+  text-align: center; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+/* This is to add that extra margin bottom from H2 text and the other text and pic */
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem; }
+
+.u-margin-bottom-medium {
+  margin-bottom: 4rem; }
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem; }
+
+.btn {
+  /* Pseudoelements let style certain parts of elements */
+  /* AFTER pseudo elements acts like a virtual element that comes right after the element that we are selecting */ }
+  .btn:link, .btn:visited {
+    /* Visited is the state when the user presses the button */
+    text-transform: uppercase;
+    /* Gets rid of the default blue text with underline style link, no decorations. */
+    text-decoration: none;
+    padding: 1.5rem 3rem;
+    /* Padding is for the padding and space around the button link */
+    display: inline-block;
+    /* It appears at the beggineing of main-sub text, so its off. By default it is considered an inline element bc its simply text, but we should display it as in inline block. This way the box model works on this element as if it was just a normal block element.  */
+    /* Always inline-block if you want to give paddings, height, or width to elements. */
+    border-radius: 10rem;
+    /* Curves out the edges */
+    transition: all .2s;
+    /* Use transition property. Then specify which properties you want to animate, can say all, all properties are enabled to be animated.  **This is short hand for animation properties such as moveInLeft, 2 seconds, ease-out, as short hand. */
+    /* We initialize the transition within the inital state where all the properties that apply to the button, Transform on the 'active' and 'hover' will be animated in relation to its initial state. */
+    position: relative;
+    /* In order to create a reference for element position for others*/
+    font-size: 1.8rem;
+    /* Button text font-size */ }
+  .btn:hover {
+    transform: translateY(-0.3rem);
+    /* Transform is very important for animation movement btw. When you hover, the button will go down -3px on Y access (It starts from the top, so it has to be negative to go down */
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    /* X Y Blur color */ }
+    .btn:hover::after {
+      /* When we hover the button, then we want some certain styles for the after pseudoelement*/
+      transform: scaleX(1.4) scaleY(1.6);
+      /* What happens when we hover over it? We want it to be big */
+      /* On this one, we use 'scale' because scale does is increase the element */
+      /*If you use scale(2) it increases the element by 2 when you hover over it. If you use X,Y then it coordinates to that. */
+      /* So where do you declare this transition property? You do it on the initial state, which is the .btn::after
+                                                  /* Transform is important */
+      opacity: 0;
+      /* You need to fade it out as it grows, Opacity at 0 is key to that */ }
+  .btn:active {
+    transform: translateY(-0.1rem);
+    /* What happens when the button is pressed, it goes down -1px on the Y */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    /* X Y Blur color */ }
+  .btn--white {
+    /* Modifier so (--) */
+    background-color: #ffffff;
+    /* Color of the padding, space around text in the button */
+    color: #777777; }
+    .btn--white::after {
+      /* This creates the circle image that goes under the button to expand out in an animated way, making the button look alive */
+      background-color: #ffffff;
+      /* AFTER pseudo element describes the previous element, so in this case for the whit button, we still want white as it expands out. */
+      /* It will at first be bigger than the regular because it looks like its still part of the element. So what we want to do is put it behind the button. With that we use absolute positioning like on the previous CSS lines .btn::after */ }
+  .btn::after {
+    /* the trick is to create an element exactly like the element button we had, same size, and to put the after element, behind the button, and when we hover out of the button, basically the pseudoelement goes behind the button*/
+    content: "";
+    /* specify content property, always neccesary, it can be an empty string, but we have to specify or it wont appear */
+    display: inline-block;
+    /* inline-block, because the button we have is also an incline-block. We want it to look the same */
+    height: 100%;
+    /* We want it look the same, so it will be 100% */
+    width: 100%;
+    /* We want it look the same, so it will be 100%. It works becuase the after element is basically treated like a child element of the button. If we call 100% it is, 100% of the button */
+    border-radius: 10rem;
+    /* Border radius the same as btn */
+    position: absolute;
+    /* Here we create the positiong for the .btn-white::after which is position: absolute, absolute positioing. */
+    /* When adding positioning make sure to redirect the positioning because by default, it will go to the header position because w deinfed the header as a position: relative. So create a new position:relative for btn to set it behind the button */
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Z element defines the position of the element, if they are on on top of the other. (-1) it is behind */
+    transition: all .4s;
+    /* Insert the transition properties, in the INITIAL STATE, which this particular element coming from the bttom CSS, when it is hovered over. */ }
+  .btn--animated {
+    /* Animation, must be declared, animation: moveInButton transform properties */
+    animation: moveInBottom .5s ease-out .75s;
+    /* name, duration, animation timing function, delay of appearance */
+    animation-fill-mode: backwards; }
+
+.btn-text {
+  /* Button about me section */ }
+  .btn-text:link, .btn-text:visited {
+    font-size: 1.8rem;
+    color: #240497;
+    display: inline-block;
+    /* We use inline-block so we can use padding, margin, etc */
+    text-decoration: none;
+    /* Get rid of default underline */
+    border-bottom: 1px solid #240497;
+    /* Creat custom underline with border-bottom */
+    padding: 3px;
+    transition: all .2s;
+    /* We want to add this transition to all from the transform from below so all these properties can transition/transform */ }
+  .btn-text:hover {
+    background-color: #240497;
+    color: white;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    /* (X direction, Y direction, rgba color, 15% */
+    transform: translateY(-2px);
+    /* negative moves it up */ }
+  .btn-text.active {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translateY(0);
+    /* Once pressed it goes down to y = 0 */ }
+
+/* This is for the photos */
+.composition {
+  position: relative;
+  /* The relative position of an absolute*/ }
+  .composition__photo {
+    /* For JS, Angular, Node pics */
+    width: 55%;
+    /* Width of the pictures */
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+    border-radius: 2px;
+    position: absolute;
+    /* If you want to use "absolute positioning" It will placed according to its parent relative aka "position releatvie"*/
+    /*top left coordinate will be in composition element */
+    z-index: 10;
+    /* In order to zoom on a hover set them to a z-index, one that is lower than the hover zoom one. */
+    transition: all .2s;
+    /* This is for the hover effecr transform/ transition */
+    outline-offset: 2rem;
+    /* Space between border and img */ }
+    @media (max-width: 56.25em) {
+      .composition__photo {
+        float: left;
+        position: relative;
+        /* For the pictures (JS,Angular,etc) change the positioning to relative in order to move them side by side fro media querys */
+        width: 33.333333%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2); } }
+    .composition__photo--p1 {
+      left: 0;
+      /* top left coordinate will be in composition element */
+      top: -2rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p1 {
+          top: 0;
+          transform: scale(1.2); } }
+    .composition__photo--p2 {
+      right: 0;
+      /* starts on right side, zero px from right side */
+      top: 2rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p2 {
+          top: -1rem;
+          transform: scale(1.3);
+          z-index: 100; } }
+    .composition__photo--p3 {
+      left: 20%;
+      top: 10rem; }
+      @media (max-width: 56.25em) {
+        .composition__photo--p3 {
+          top: 1rem;
+          left: 0;
+          transform: scale(1.1); } }
+    .composition__photo:hover {
+      outline: 1.5rem solid #240497;
+      /* Outline for border pop out */
+      transform: scale(1.05);
+      /* When hovered over, increase the scale by 1.05 */
+      box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
+      /* Increase box shadow too */
+      z-index: 20;
+      /* And have the z index higher than the default so that is brough to the forefront */ }
+  .composition:hover .composition__photo:not(:hover) {
+    /* composition then select picture that are not hovered */
+    transform: scale(0.9); }
+
+/* This is for the Cards section that will show what my skills, not the portfoliio section */
+.feature-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  /* This is the entire box color, it is white with a little bit of transparent, 80% white 20% transparent */
+  font-size: 2rem;
+  padding: 3rem 3rem 3rem 3rem;
+  padding-bottom: 5rem;
+  text-align: center;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+  transition: transform .3s;
+  list-style: none;
+  color: gray;
+  align-items: baseline;
+  text-decoration: none; }
+  @media (max-width: 56.25em) {
+    .feature-box {
+      padding: 2rem; } }
+  .feature-box__icon {
+    font-size: 6rem;
+    /* Size of the logo */
+    margin-bottom: .5rem;
+    /* The space betwwen the logo and the header */
+    -webkit-background-clip: text;
+    color: transparent; }
+    @media (max-width: 56.25em) {
+      .feature-box__icon {
+        margin-bottom: 0; } }
+  .feature-box:hover {
+    transform: translateY(-1.5rem) scale 1.03; }
+  .feature-box__list ul {
+    list-style: none; }
+  .feature-box__list li {
+    font-size: 1.5rem; }
+
+/* This for the cards that will show the project portfolios */
+.card {
+  perspective: 150rem;
+  -moz-perspective: 150rem;
+  position: relative;
+  height: 52rem; }
+  .card__side {
+    height: 52rem;
+    transition: all .8s ease;
+    /* The transition from the hover */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    /* This is for the picture on the card. They were curved edges, but when you add the img it covers the whole thing including the edge points of the pic. So this allows the pic to go around it and stop at the edges */
+    border-radius: 3px;
+    /* Create these two lines of code for the shadow */
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15); }
+    .card__side--front {
+      background-color: white; }
+    .card__side--back {
+      transform: rotateY(180deg); }
+      .card__side--back-1 {
+        background-image: linear-gradient(to right bottom, #120c24fb, #240497);
+        /* use background-image to be able to linear gradient. */ }
+  .card:hover .card__side--front {
+    transform: rotateY(-180deg);
+    /* .card:hover .card__side */ }
+  .card:hover .card__side--back {
+    transform: rotateY(0);
+    /* .card:hover .card__side */ }
+  .card__picture {
+    /* This is for the card picture */
+    background-size: cover;
+    /* outside selector for all cards. This is the size of the background that covers the whole cover */
+    height: 23rem;
+    /* Define the heigh of the picture within the card */
+    background-blend-mode: soft-light;
+    /* A really cool new CSS photoshop type tool that uses a linear gradient and the background-blend-mode: mukltiply -- or other options to filter pics pretty cool */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    /* This is how to clip the eges on the picture clip  clip-path */
+    /* Use -webkit-clip-path (webkit) in order to translate newer CSS features to browsers */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    /* See above the first is to update the older browsers, second line is to be consistent with the already compatible browsers */ }
+    .card__picture--1 {
+      background-image: url(../img/ee2998cdb1cf6a6bf66bf65fe0076fd2.gif);
+      /*Unsplash.com for pics*/ }
+    .card__picture--2 {
+      background-image: url(../img/GloomyJovialElephantbeetle-max-1mb.gif); }
+    .card__picture--3 {
+      background-image: url(../img/SpotlessGreatIvorybilledwoodpecker-max-1mb.gif); }
+  .card__heading {
+    /* This is for the card header */
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;
+    /* Align text to the right, so that everything can be aligned nicely to the right */
+    color: white;
+    position: absolute;
+    /* The text is made position: absolute to bring it to the top of the image */
+    top: 12rem;
+    /* From the top we want 12 rem */
+    right: 2rem;
+    /* From the right we want 2 rem */ }
+  .card__details {
+    padding: 3rem; }
+    .card__details ul {
+      /* You have the ul here and inside the the li */
+      list-style: none;
+      /* This is standard whenever we want to use list just say none */
+      width: 80%;
+      /* We chose thus width because the lines dont go completely from side to side, instead it ends before the edges */
+      margin: 0 auto;
+      /* This is the way to center a block element inside of a block element, 0 @ top, left, bottom, right */ }
+      .card__details ul li {
+        /* The item */
+        text-align: center;
+        /* Align text to center */
+        font-size: 1.5rem;
+        padding: 1rem; }
+        .card__details ul li:not(:last-child) {
+          border-bottom: 1px solid #eeee; }
+  .card__cta {
+    position: absolute;
+    /* Use the position absolute to use it as "the" position of reference, not the Parent element */
+    /* The Center Method */
+    top: 50%;
+    /* Top moves it 50% down */
+    left: 50%;
+    /* Move 50% of the parents element width to the left*/
+    transform: translate(-50%, -50%);
+    /* Transform it back to the exact center -50% of thw width of the element not the parent, and -50% to put it back up  */
+    text-align: center;
+    width: 90%; }
+  .card__price-box {
+    text-align: center;
+    margin-bottom: 8rem;
+    color: white; }
+  .card__price-only {
+    font-size: 1.4rem;
+    text-transform: uppercase; }
+  .card__price-value {
+    font-size: 6rem;
+    font-weight: 100; }
+
+.row {
+  /* Start with the ROW */
+  max-width: 114rem;
+  /* (Transfered to "_variables.scss)We must define a width for the ROW. One of the standards is to use an 1140px grid. But we need to convert to REM. 1140/10 = 114REM. */
+  /* Use "max-width" because it will adapt to width of screen when minimized. It means if we have enough available space then we will have the width that we specified. If there is not enough width such as the viewport is smaller than the width specified, then it will fit 100% of the space that it has. */
+  /*background-color: gray; */
+  margin: 0 auto;
+  /*  This is the trick to center a block element indide another block element, btw. When we say we want it automatically, that means that the browser when rendering the page will automatically figure out the margin that we want on the left and on the right side. And when it is set to "auto" both left and right will be the same, centered. */
+  /* A clearfix appends a pseudoelement after the element which well then clear these floats */
+  /* Retains the height from a collapse of floats. So a little confusing but rememebr the "Clearfix" hack when you float. Remember it collapses so if you do the inspect element on Chrome the height is gonna read height: 0. So we need to use clearfix hack. */
+  /* Use Atribute selector to select a group of elements and spread the attribute to the elements you want, pretty powerful */
+  /* You can manipulate the size of the colums simply by changing variable values, pretty cool */ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem;
+    /* (We can nest inside .row)  .row:not() Basically the not() argument can be used to bypass (select everything but...) a node such as "last-child" the bottom margin of the boxes so their wont be a gap between the bottom one and the bottom margin. */ }
+    @media (max-width: 56.25em) {
+      .row:not(:last-child) {
+        margin-bottom: 6rem; } }
+  @media (max-width: 56.25em) {
+    .row {
+      max-width: 50rem;
+      padding: 0 3rem; } }
+  .row::after {
+    content: "";
+    /* Empty because we dont want to display this on the page. */
+    display: table;
+    /* This is the standard display used */
+    clear: both;
+    /* This will make it clear regardless if its left or right */ }
+  .row [class^="col-"] {
+    /* Inside .row Attribute Selctor [src(pic), class, alt ] This lets you select all the attributes that deals with what you choose in an attribute selector./*
+                                                                                 /* We use an attribute selector here instead of .___ in order to be able to select the begging, all of it, or the end. Ex: [class^="col-"] - starts; [class*="col-"] - choose any class that contains "col-"; [class$="col-"] - any class that ends in "col-" ; */
+    /* Also, select links, anchor elements,  and other things */
+    /* background-color: orangered; */
+    float: left;
+    /* We always float these colums to the left side. Since this is a float layout we FLOAT everything to the left */ }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem;
+      /* The margin right is for the space AFTER the box and youo add it to all of the boxes except the last one, sort of like the no space between the last bottom bottom box */ }
+      @media (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media (max-width: 56.25em) {
+      .row [class^="col-"] {
+        width: 100% !important; } }
+  .row .col-1-of-2 {
+    /* This is where you declare the columns of the box, they come nested inside the .row{ }. */
+    width: calc((100% - 6rem) / 2);
+    /* Basically in order to create a column, you have to grab (100% of the width - the size of the space between the columns aka $gutter-horizontal divided by 2 parts. */
+    /* In calc() function in CSS, if you want to use a SASS variable, you have to use a hash and wrap it around curly braces. 6rem */ }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3);
+    /* You want 2 gutter and 3 columns */ }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem);
+    /* 2 of 1-of-3's aka (1 of 3 + 1 of 3) + the gutter width to extend it */ }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4);
+    /* You want 3 gutters and 4 columns */ }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem);
+    /* width is like a .col-1-of-4 but 2 times + the gutter*/ }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 *6rem);
+    /* width is like a .col-1-of-4 but 3 times + 2 gutter*/ }
+
+.header {
+  height: 95vh;
+  /* This means height of the header so it wall have a height 95 % of the viewport */
+  background-image: url(../img/AnimatedMicrochip2.gif);
+  background-size: cover;
+  background-position: top;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  /* image crop, the 75vh is the cutoff for the side edge of the header. So when you add the about us section 95-75 = 20. That is by how much you need to extend the "about" section in order for them to touch and see no gap*/
+  position: relative;
+  /* This is the origin for the logo-box and will follow the .header styling and keep it it in position of the header. */
+  /* change of viewport height is what will stay consistent w the header, when browser manipulated. */
+  /* height: 95 % of viewport height is what is shown as you manipulate size of browser. class seletor: header. Background-size: cover - Always tries to fit the element inside of the box aka when you minimize and expand. Background Position (top): Whenever the viewport is adjusted the top always shows.
+                                                   linear-gradient( can be to left, to up, to down, right bottom corner)-gradual increase or decrease of color. You can hover over color to 'color pick' (RBGA) red, blue, green, opacity.
+                                                   Clip path: polygon (x y, x y, x y, x y ) is for the cut at the top. The first coordinate set: is the top left. You want to X is acroos, Y is up and down. 200px is the top right --(clippy- CSS tool, gives you the coordinates for different designs, cool!) */ }
+  @media (max-width: 37.5em) {
+    .header {
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%); } }
+  .header__logo-box {
+    position: absolute;
+    /* absolute positioning, the header is the parent element, so therefore it shoudld be placed in the header section of CSS. */
+    top: 3rem;
+    left: 4rem; }
+  .header__logo {
+    height: 7rem;
+    /* size of the image itself, set the height and the browser will set the width*/ }
+  .header__text-box {
+    position: absolute;
+    /* use absolute positioning to position it within the header.*/
+    top: 30%;
+    /* This is the top text at what level do you want the top (IN RELATION TO THE PARENT --HEADER (in this case) to be on....So basically this measurement will end in the middle if put at 50% so starting from the first letter, so essentially it will be off. Therefore, you must shift it a bit */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* Literally starts text in the middle at 0, so you gotta shift it to the left, lol. This is the repositioning of the actual element itself (Like within Header parent element the how much you want to translate on X,Y on graph) basically you grab the element itself and shift it 50%, basically centering it, after you had done the absolute positioning, since its going to be off a little bit from the previous alignment.*/
+    text-align: center; }
+
+.footer {
+  background-color: #333;
+  padding: 10rem 0;
+  font-size: 1.4rem; }
+  @media (max-width: 56.25em) {
+    .footer {
+      padding: 8rem 0; } }
+  .footer__logo-box {
+    text-align: center;
+    margin-bottom: 8rem; }
+  .footer__logo {
+    width: 15rem;
+    height: auto; }
+  .footer__navigation {
+    border-top: 1px solid #eeee;
+    padding-top: 2rem;
+    display: inline-block;
+    /* This is for the line in the footer, usually the line goes further then needed but inline-block makes it only take the space it needs */ }
+    @media (max-width: 56.25em) {
+      .footer__navigation {
+        width: 100%;
+        text-align: center; } }
+  .footer__list {
+    list-style: none; }
+  .footer__item {
+    display: inline-block; }
+    .footer__item:not(:last-child) {
+      margin-right: 1.5rem; }
+  .footer__link:link, .footer__link:visited {
+    color: #f7f7f7;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: inline-block; }
+  .footer__link:hover, .footer__link:active {
+    color: #240497;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); }
+
+/* This is for all the home page sections */
+.section-about {
+  /* The "about section" in the homepage */
+  background: #f7f7f7;
+  padding: 25rem 0;
+  /* 25 on the top and bottom, where the zero is, I guess. */
+  margin-top: -20vh;
+  /* Negative margin in this case moves up. This allows to fill that space between the heade and about section where the edge chops off*/ }
+
+.section-features {
+  padding: 20rem 0;
+  /* 200px, 0 left and right */
+  /* 200px, 0 left and right, to make it spacey */
+  background-image: url(../img/AnimatedMicrochip2.gif);
+  background-size: cover;
+  transform: skewY(-7deg);
+  margin-top: -10.5rem; }
+  .section-features > * {
+    transform: skewY(7deg); }
+  @media (max-width: 56.25em) {
+    .section-features {
+      padding: 10rem 0; } }
+
+.section-tours {
+  background: #f7f7f7;
+  padding: 25rem 0 50rem 0;
+  /* 25 on the top, 0 on the right side, bottom 50 rem, and 0 on the left   /* 25 on the top and bottom, where the zero is, I guess. */
+  margin-top: -10rem; }

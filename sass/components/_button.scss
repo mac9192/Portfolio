@@ -1,0 +1,114 @@
+
+.btn{
+
+    &:link,                          /* Link is the special state of a selector when it is an anchor element, so it functions like a link. This is an anchor pseudoclass that activates properties under speacil conditions for example, hovering over a button, checkbox is clicked */ 
+    &:visited  {                     /* Visited is the state when the user presses the button */  
+        text-transform: uppercase;      /* Gets rid of the default blue text with underline style link, no decorations. */ 
+        text-decoration: none;   
+        padding: 1.5rem 3rem;           /* Padding is for the padding and space around the button link */
+        display: inline-block;          /* It appears at the beggineing of main-sub text, so its off. By default it is considered an inline element bc its simply text, but we should display it as in inline block. This way the box model works on this element as if it was just a normal block element.  */    
+                                        /* Always inline-block if you want to give paddings, height, or width to elements. */ 
+        border-radius: 10rem;           /* Curves out the edges */
+        
+        transition: all .2s;            /* Use transition property. Then specify which properties you want to animate, can say all, all properties are enabled to be animated.  **This is short hand for animation properties such as moveInLeft, 2 seconds, ease-out, as short hand. */
+                                        /* We initialize the transition within the inital state where all the properties that apply to the button, Transform on the 'active' and 'hover' will be animated in relation to its initial state. */
+        
+        position: relative;             /* In order to create a reference for element position for others*/
+        font-size: $default-font-size;              /* Button text font-size */
+    }
+    
+    
+    
+    &:hover{
+        transform: translateY(-.3rem);    /* Transform is very important for animation movement btw. When you hover, the button will go down -3px on Y access (It starts from the top, so it has to be negative to go down */
+        box-shadow: 0 1rem 2rem rgba(0,0,0,.2);  /* X Y Blur color */
+
+        &::after {                       /* When we hover the button, then we want some certain styles for the after pseudoelement*/ 
+    
+            transform: scaleX(1.4) scaleY(1.6);   /* What happens when we hover over it? We want it to be big */ /* On this one, we use 'scale' because scale does is increase the element */ /*If you use scale(2) it increases the element by 2 when you hover over it. If you use X,Y then it coordinates to that. */ 
+                                                  /* So where do you declare this transition property? You do it on the initial state, which is the .btn::after
+                                                  /* Transform is important */
+            opacity: 0;                           /* You need to fade it out as it grows, Opacity at 0 is key to that */                   
+        }
+
+
+
+    }
+    
+    &:active{
+        transform: translateY(-.1rem);    /* What happens when the button is pressed, it goes down -1px on the Y */
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.2); /* X Y Blur color */
+    }
+    &--white{                        /* Modifier so (--) */
+        background-color: #ffffff;      /* Color of the padding, space around text in the button */
+        color: #777777                /* Text color inside button */
+        ;
+    
+        &::after {               /* This creates the circle image that goes under the button to expand out in an animated way, making the button look alive */
+            background-color: #ffffff;  /* AFTER pseudo element describes the previous element, so in this case for the whit button, we still want white as it expands out. */
+                                          /* It will at first be bigger than the regular because it looks like its still part of the element. So what we want to do is put it behind the button. With that we use absolute positioning like on the previous CSS lines .btn::after */
+        }
+    
+    
+    
+    
+    
+    }
+     
+                                        /* Pseudoelements let style certain parts of elements */
+    
+    
+                                        /* AFTER pseudo elements acts like a virtual element that comes right after the element that we are selecting */
+    &::after {                       /* the trick is to create an element exactly like the element button we had, same size, and to put the after element, behind the button, and when we hover out of the button, basically the pseudoelement goes behind the button*/
+    
+        content: "";                /* specify content property, always neccesary, it can be an empty string, but we have to specify or it wont appear */
+        display: inline-block;      /* inline-block, because the button we have is also an incline-block. We want it to look the same */
+        height: 100%;               /* We want it look the same, so it will be 100% */
+        width: 100%;                /* We want it look the same, so it will be 100%. It works becuase the after element is basically treated like a child element of the button. If we call 100% it is, 100% of the button */ 
+        border-radius: 10rem;       /* Border radius the same as btn */ 
+        position: absolute;         /* Here we create the positiong for the .btn-white::after which is position: absolute, absolute positioing. */
+                                    /* When adding positioning make sure to redirect the positioning because by default, it will go to the header position because w deinfed the header as a position: relative. So create a new position:relative for btn to set it behind the button */
+        top: 0;                       
+        left: 0;
+        z-index: -1;                /* Z element defines the position of the element, if they are on on top of the other. (-1) it is behind */
+        transition: all .4s;        /* Insert the transition properties, in the INITIAL STATE, which this particular element coming from the bttom CSS, when it is hovered over. */
+    
+    }
+    
+  
+   
+    
+    &--animated {                                                /* Animation, must be declared, animation: moveInButton transform properties */
+        animation: moveInBottom .5s ease-out .75s;               /* name, duration, animation timing function, delay of appearance */
+        animation-fill-mode: backwards;          
+    }
+    
+}
+
+.btn-text{                                                      /* Button about me section */
+    &:link,
+    &:visited{
+        font-size: 1.8rem;
+        color: $color-primary;
+        display: inline-block;                                  /* We use inline-block so we can use padding, margin, etc */
+        text-decoration: none;                                  /* Get rid of default underline */
+        border-bottom: 1px solid $color-primary;                /* Creat custom underline with border-bottom */
+        padding: 3px;
+        transition: all .2s;                                    /* We want to add this transition to all from the transform from below so all these properties can transition/transform */
+    }
+    
+    &:hover{
+        background-color: $color-primary ;
+        color: $color-white;
+        box-shadow: 0 1rem 2rem rgba($color-black, .15);        /* (X direction, Y direction, rgba color, 15% */ 
+        transform: translateY(-2px);                             /* negative moves it up */
+        
+    }
+
+    &.active{
+        box-shadow: 0 .5rem 1rem rgba($color-black, .15);        
+        transform: translateY(0);                               /* Once pressed it goes down to y = 0 */
+    }
+  
+}
+

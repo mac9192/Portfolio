@@ -1,0 +1,51 @@
+
+/* This is for the Cards section that will show what my skills, not the portfoliio section */
+
+.feature-box{
+    background-color: rgba($color-white, .8);                                   /* This is the entire box color, it is white with a little bit of transparent, 80% white 20% transparent */ 
+    font-size: 2rem;
+    padding: 3rem 3rem 3rem 3rem;
+    padding-bottom: 5rem;
+    text-align: center;
+    border-radius: 3px;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+    transition: transform .3s;
+    
+    list-style: none;
+    color: gray;
+    
+    align-items: baseline;
+    
+    text-decoration: none;
+
+    @include respond(tab-port){
+        padding: 2rem;
+    }
+   
+   &__icon {                                        
+       
+        font-size: 6rem;                                                       /* Size of the logo */
+        margin-bottom: .5rem;                                                  /* The space betwwen the logo and the header */
+        -webkit-background-clip: text;
+        color: transparent;
+
+        @include respond(tab-port){
+            margin-bottom: 0;
+        }
+
+    }
+
+    &:hover {
+        transform: translateY(-1.5rem) scale (1.03);
+    }
+
+    
+    &__list{
+        ul{
+            list-style: none;
+        }
+        li{
+            font-size: 1.5rem;
+        }
+    }
+}

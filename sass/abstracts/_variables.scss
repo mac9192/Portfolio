@@ -1,0 +1,27 @@
+
+//Variables for the grid .row{...}
+/* You can manipulate the size of the colums simply by changing variable values, pretty cool */
+$grid-width: 114rem;          /* Width = 114rem */
+$gutter-vertical: 8rem;         /* Up and down space in between the columns */
+$gutter-horizontal: 6rem;       /* Side to side space in between the columns */
+$gutter-vertical-small: 6rem;
+
+
+$color-grey-light-1: #f7f7f7; 
+$color-primary-light: #120c24fb;
+$color-primary-medium: #55c57a;
+$color-primary-dark: #240497;
+$color-primary: #240497; 
+$color-white: white; 
+$color-black: black;
+
+$color-secondary-light: #120c24fb;
+$color-secondary-dark: #240497;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$color-grey-light-2: #eeee;
+$color-grey-dark-3: #333;
+
+$default-font-size: 1.8rem;

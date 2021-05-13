@@ -1,0 +1,73 @@
+
+/* Basic definitions about our entire project */
+
+*, 
+*::after,                                      /*  You are going to have to include the ::after and ::before objects so that it can inherit, and something goofy is off because the exclusion. */
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;                       /*  This will allow for the inheritance of all other objects from the declaration made now in the body section. **Better coding practice**                                           
+                                               /*  box-sizing: border-box; -> -> Move this border-box to the body section*/
+                                               /*  (*) Is for universal selector (it will apply to everything): Resets the appearnce to a browser, they can change in appearance */
+}
+
+
+                                               /* This defines what 1 rem is */
+                                               /* Though we had all the typography methods moved to the typograhoy file, we leave this HTML typography here because it is used as a base for all the other typgraphyies and we can use it as a universal setting that effects others if switched */
+
+html{                                          /*  Set root font size in order to convert to REM */ 
+
+    font-size: 62.5%;                          /* This right here defines what 1 REM is! root font-size */ /* Why 10 pixels? To make life easier. Now we know that 1 REM = 10 px ; 1 REM is equal exactly the root font-size. */
+                                               /*  Going by pixels for font-size is bad practice because it overrides the browser's default font size and then people that want to zoom can no longer zoom */
+                                               /*  So we then have to go by percentages, if you make it 100% then it would by default be 16px if the user wanted to change rootfont size to 18px then the root font size would be 18 px, and so on...
+                                                   But we dont want 16 px in this case, we want 10 px so in tis case, you would divide 10/16  =.625 Ex: .625*22(user changes root font size)  = 13.75 px */   
+
+
+   
+
+    /*@include respond(phone){                 /* Cancel this one out because the tab-port is the same argument.
+        font-size: 50%;
+    }
+    */
+
+    @include respond(tab-land){                     // width < 1200?
+        font-size: 56.25%;                          //1 rem = 9px, 9/16 = 56.25%  
+    }
+
+// put tab-land and tab-port in this order. Larger ones before smaleer one
+
+
+    @include respond(tab-port){                     // width < 900?
+        font-size: 50%;                             //1 rem = 8px, 8/16 = 50%
+    }
+
+
+    @include respond(big-desktop){                  //1 rem = 12, 12/16 = 75
+        font-size: 75%;
+    }
+
+}
+
+
+
+
+
+
+
+                    /*...........................................................ALL FONT SIZES WERE CHANGED TO REM so for example the padding pixel below was 30px now it is 3 REMS now..................................................*/
+
+
+
+body {
+   
+    box-sizing: border-box;                     /* Moved here from the universal declaration section. What this means is that box-sizing will now be declared in the body and it will then be inherited by all other objects through the inheritance of the universal declarations */
+                                                /* We moves the other typography CSS to typography and leave this known to be a box */
+
+    padding: 3rem;                              /* Padding - is the thin border around the body edges.*/   
+    
+
+    @include respond(tab-port){                     
+        padding: 0;                             /* White border Padding is excluded on the phones. */              
+    }
+
+}                                               

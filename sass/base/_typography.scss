@@ -1,0 +1,116 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+                                                /* font-size: 16px;         Commented out, new html font-size made for REM to px conversion */
+    line-height: 1.7;
+    color: white;                             /* The white border around the webpage */
+    
+
+                                                /* HTML declarations changes this !!! = (declare font in the body element, it will be inherited by all child elements of the body.)*/       
+   
+}                                               
+
+
+.heading-primary{                             /* Carries the shared properties of both the main and sub headings (top and bottom) */ 
+    color: white;
+    text-transform: uppercase;                /* text lowercase,uppercase, etc */
+    backface-visibility: hidden;
+    margin-bottom: 8rem;                      /* For the space between Front End Developer and the button, it increases the bottom margin of the box therefore lowers it*/
+
+
+    
+
+    &--main{                                  /* To put these two texts one under another, is to display them as block level elements. Because block level elements occupy the entire width they have available, and most importantly in this case, they create line breaks, after and before them.*/  
+        display: block;                       /* a <span> is an inline element, so its just like text.  which is what this is. */
+        font-size: 6rem;
+        font-weight: 400;
+        letter-spacing: 1rem;
+    
+        
+                                                   /* Declare animation sequence here for the top: (primary-main) animation sequence. */
+        animation-name: moveInLeft;                /* Reference the animation name you are trying to use aka their properties) */
+        animation-duration: 2s;                    /* How long it will last*/
+        
+        animation-timing-function: ease-out;       /* Specifies how a CSS animation should progress over the duration of each cycle from moveInLeft, (ease-in): animation will start slower. (ease-out): animation will start fast and will become slower. Look up other animation timing functions online */
+        
+        
+                                                   /* animation-delay: 3s; Delays the appearance when you refresh or arrive at the website 
+                                                   /* animation-iteration-count: 3; reiterates the animation sequence 3 times so basically animations the header name three times in a row.  */   
+    
+         @include respond(phone){                  /* This decreases text size for phones */
+            letter-spacing: 1rem;
+            font-family: 5rem;                     /* Decrease to 1 rem smaller */
+            }
+                                            
+    
+    
+    
+     }
+    
+    &--sub{
+        display: block;
+        font-size: 3rem;
+        font-weight: 700;
+        letter-spacing: 1.7rem;
+                                                /* This is for the second text positioning Remember you have to shift it to the left a little further so it can be centered because the text box got shifted a little to the left aka -50% or it'll start of in the dead center, making it look too on the right */ 
+        
+        animation: moveInRight 2s ease-out;    /* nstead of specifying all the properties from the CSS above, animation-name, duration etc. just use animation: moveInRight */
+        backface-visibility: hidden;
+
+        @include respond(phone){
+            letter-spacing: .5rem;
+        }
+
+    }
+}
+
+.heading-secondary{
+
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: inline-block;                                                                                               /* By default, it will display as a "block" so it will take up the whole width, we must make it "in-line". */ 
+    background-image: linear-gradient(to right, $color-primary-light, $color-primary-dark);        /* This for the color transition of the H2, you have to make the background to color gradient. */ 
+    
+    
+    
+    
+    
+    
+    
+    
+    -webkit-background-clip: text;
+    color: transparent;                                                                            /* We make it transparent because by default it will be grey, or another color, but we want linear gradient so we make it transparent for the background color */
+    letter-spacing: .2rem;
+    transition: all .2s;                                                                           /* How fast will the effect be? */
+        &:hover{
+            transform: skewY(2deg) skewX(15deg) scale(1.1);                                        /* This is the transition hover Y goes to the side x goes up and down scale is just to scale it a little 110%*/
+            text-shadow: .5rem 1rem 2rem rgba(black, .2);                                        /* Shawdow text */
+       
+        }
+
+
+    @include respond(tab-port){
+        font-size: 2.5rem;
+    }
+
+    @include respond(phone){
+        font-size: 2rem;
+
+}
+}
+
+.heading-tertiary{                                                                                  /* Typography for the tertiary heading */
+
+    font-size: $default-font-size;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.paragraph{                                                                                         /* Paragraph typography with font size and the margin at the last child doens not have a bottom margin */                                            
+    font-size: $default-font-size;
+
+    &:not(:last-child){
+        margin-bottom: 3rem;
+    }
+} 

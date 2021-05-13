@@ -1,0 +1,144 @@
+/* This for the cards that will show the project portfolios */
+
+.card{
+    //FUNCTIONALITY 
+     perspective: 150rem;
+     -moz-perspective: 150rem ; 
+     position: relative;
+     height: 52rem;
+
+    &__side {
+    
+        height: 52rem;
+        transition: all .8s ease;                                                   /* The transition from the hover */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% ;
+       -webkit-backface-visibility: hidden;
+    
+        overflow: hidden;                                                           /* This is for the picture on the card. They were curved edges, but when you add the img it covers the whole thing including the edge points of the pic. So this allows the pic to go around it and stop at the edges */
+        border-radius: 3px;                                                         /* Create these two lines of code for the shadow */                           
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .15);
+ 
+ 
+    &--front {
+
+        background-color: $color-white;
+    }
+
+   &--back {
+
+        
+        transform: rotateY(180deg);
+
+        &-1{
+            background-image: linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark);  /* use background-image to be able to linear gradient. */
+        }
+    } 
+
+}
+
+   
+
+   &:hover &__side--front {
+       transform: rotateY(-180deg);                       /* .card:hover .card__side */
+   
+   
+    }
+
+    &:hover &__side--back {
+        transform: rotateY(0);                       /* .card:hover .card__side */
+    
+    
+     }
+
+//FRONT SIDE STYLING
+
+&__picture {                                                                                     /* This is for the card picture */
+    background-size: cover;                                                                      /* outside selector for all cards. This is the size of the background that covers the whole cover */
+    height: 23rem;                                                                               /* Define the heigh of the picture within the card */
+    background-blend-mode: soft-light;                                                           /* A really cool new CSS photoshop type tool that uses a linear gradient and the background-blend-mode: mukltiply -- or other options to filter pics pretty cool */
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);                                   /* This is how to clip the eges on the picture clip  clip-path */ /* Use -webkit-clip-path (webkit) in order to translate newer CSS features to browsers */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);                                           /* See above the first is to update the older browsers, second line is to be consistent with the already compatible browsers */ 
+    
+    
+     
+    
+    &--1{
+        background-image: /*linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),*/ url(../img/ee2998cdb1cf6a6bf66bf65fe0076fd2.gif); /*Unsplash.com for pics*/
+    }
+    &--2{
+        background-image: /*linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),*/ url(../img/GloomyJovialElephantbeetle-max-1mb.gif);
+    }
+
+    &--3{
+        background-image: /*linear-gradient(to right bottom, $color-secondary-light, $color-secondary-dark),*/ url(../img/SpotlessGreatIvorybilledwoodpecker-max-1mb.gif);
+    }
+}
+
+&__heading {                                                                                   /* This is for the card header */
+
+    font-size: 2.8rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: right;                                                                          /* Align text to the right, so that everything can be aligned nicely to the right */
+    color: $color-white;
+    position: absolute;                                                                         /* The text is made position: absolute to bring it to the top of the image */ 
+   
+    top: 12rem;                                                                                 /* From the top we want 12 rem */
+    right: 2rem;                                                                                /* From the right we want 2 rem */
+}   
+
+&__details{
+
+    padding: 3rem;
+    
+    ul {                                                                                         /* You have the ul here and inside the the li */
+        list-style: none;                                                                        /* This is standard whenever we want to use list just say none */ 
+        width: 80%;                                                                              /* We chose thus width because the lines dont go completely from side to side, instead it ends before the edges */ 
+        margin: 0 auto;                                                                          /* This is the way to center a block element inside of a block element, 0 @ top, left, bottom, right */
+
+        li {                                                                                       /* The item */
+            text-align: center;                                                                    /* Align text to center */
+            font-size: 1.5rem;
+            padding: 1rem; 
+
+            &:not(:last-child){
+                border-bottom: 1px solid $color-grey-light-2;
+            }
+        }
+    }
+}
+
+&__cta {
+
+    position: absolute;                                                                         /* Use the position absolute to use it as "the" position of reference, not the Parent element */
+    
+    /* The Center Method */
+    top: 50%;                                                                                   /* Top moves it 50% down */
+    left: 50%;                                                                                  /* Move 50% of the parents element width to the left*/
+    transform: translate(-50%, -50%);                                                            /* Transform it back to the exact center -50% of thw width of the element not the parent, and -50% to put it back up  */
+    text-align: center;
+    width: 90%;
+}
+    &__price-box{
+        text-align: center;
+        margin-bottom: 8rem;
+        color: $color-white;
+        
+    }
+
+    &__price-only{
+        font-size: 1.4rem;
+        text-transform: uppercase;
+
+    }
+
+    &__price-value{
+        font-size: 6rem;
+        font-weight: 100;
+    }
+}
+
+

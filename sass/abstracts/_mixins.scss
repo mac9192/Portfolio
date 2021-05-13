@@ -1,0 +1,62 @@
+/* Mixins are resuable bits of code that you can make and reuse throughout */
+
+@mixin clearfix {                           /* A clearfix appends a pseudoelement after the element which well then clear these floats */
+
+    &::after{
+
+        content:"";                         /* Empty because we dont want to display this on the page. */
+        display: table;                     /* This is the standard display used */
+        clear:both;                         /* This will make it clear regardless if its left or right */
+        
+    }
+
+}
+
+// Media Query Manager
+/*--------------------------------------------------------------
+/*
+
+0 - 600px: Phone
+600 - 900px: Tablet Portrait
+900 - 1200px: Tablet Landscape
+[1200 - 1800] is where our normal styles apply
+1800+ : Big desktop
+
+*/
+
+/*@mixin respond-phone{
+    @media (max-width: 600px) { @content }; }                      /* { @content } allows us to pass a block of code into a mixin. */ 
+
+/*............................................................*/
+
+/*
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+Use (If directive)
+
+We use EM in media querys. 
+1em = 16px
+*/
+
+@mixin respond ($breakpoint){
+    @if  $breakpoint == phone{
+        @media (max-width: 37.5em) { @content };    //600px
+    }
+
+    @if  $breakpoint == tab-port{
+        @media (max-width: 56.25em) { @content };     //900
+    }
+
+    @if  $breakpoint == tab-land{
+        @media (max-width: 75em) { @content };    //1200
+    }
+
+    @if  $breakpoint == big-desktop{                //1800
+        @media (min-width: 112.5em) { @content };  /* min width for big desktop */
+    }
+
+}

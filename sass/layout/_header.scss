@@ -1,0 +1,49 @@
+
+.header{
+    height: 95vh;                               /* This means height of the header so it wall have a height 95 % of the viewport */
+    background-image:                           /* linear-gradient(
+                                                    to right bottom
+                                                    ,hsla(111, 55%, 64%, 0.801)
+                                                    ,hsla(160, 64%, 43%, 0.801)), */ /*This is for the green shade on the tutorial */
+    url(../img/AnimatedMicrochip2.gif);
+    background-size: cover;
+    background-position: top;
+
+    
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)  ;               /* image crop, the 75vh is the cutoff for the side edge of the header. So when you add the about us section 95-75 = 20. That is by how much you need to extend the "about" section in order for them to touch and see no gap*/ 
+    position: relative;                                                 /* This is the origin for the logo-box and will follow the .header styling and keep it it in position of the header. */ 
+
+    @include respond(phone){
+        -webkit-clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+        clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%)  ; 
+
+    }
+     
+                                                                        /* change of viewport height is what will stay consistent w the header, when browser manipulated. */
+
+                                                                        /* height: 95 % of viewport height is what is shown as you manipulate size of browser. class seletor: header. Background-size: cover - Always tries to fit the element inside of the box aka when you minimize and expand. Background Position (top): Whenever the viewport is adjusted the top always shows.
+                                                   linear-gradient( can be to left, to up, to down, right bottom corner)-gradual increase or decrease of color. You can hover over color to 'color pick' (RBGA) red, blue, green, opacity.
+                                                   Clip path: polygon (x y, x y, x y, x y ) is for the cut at the top. The first coordinate set: is the top left. You want to X is acroos, Y is up and down. 200px is the top right --(clippy- CSS tool, gives you the coordinates for different designs, cool!) */
+ 
+ &__logo-box{
+    position: absolute;                       /* absolute positioning, the header is the parent element, so therefore it shoudld be placed in the header section of CSS. */ 
+    top: 3rem;
+    left: 4rem;
+}
+
+&__logo{
+    height: 7rem;                             /* size of the image itself, set the height and the browser will set the width*/
+}
+
+&__text-box{
+    position:absolute;                        /* use absolute positioning to position it within the header.*/
+    top: 30%;                                 /* This is the top text at what level do you want the top (IN RELATION TO THE PARENT --HEADER (in this case) to be on....So basically this measurement will end in the middle if put at 50% so starting from the first letter, so essentially it will be off. Therefore, you must shift it a bit */
+    left: 50%; 
+    transform: translate(-50%, -50%) ;        /* Literally starts text in the middle at 0, so you gotta shift it to the left, lol. This is the repositioning of the actual element itself (Like within Header parent element the how much you want to translate on X,Y on graph) basically you grab the element itself and shift it 50%, basically centering it, after you had done the absolute positioning, since its going to be off a little bit from the previous alignment.*/
+    text-align: center;
+}
+                                                    
+}
+
+

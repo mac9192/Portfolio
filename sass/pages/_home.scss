@@ -1,0 +1,41 @@
+/* This is for all the home page sections */
+
+.section-about   {                                  /* The "about section" in the homepage */ 
+
+    background: $color-grey-light-1;
+    padding: 25rem 0;                               /* 25 on the top and bottom, where the zero is, I guess. */ 
+    margin-top: -20vh;                              /* Negative margin in this case moves up. This allows to fill that space between the heade and about section where the edge chops off*/
+}                                    
+
+
+.section-features{  
+    padding: 20rem 0;                               /* 200px, 0 left and right */      
+    
+                                                    /* 200px, 0 left and right, to make it spacey */
+    background-image:                               /* linear-gradient(
+                                                        to right bottom
+                                                        ,hsla(111, 55%, 64%, 0.801)
+                                                        ,hsla(160, 64%, 43%, 0.801)), */ /*This is for the green shade on the tutorial  */
+
+    url(../img/AnimatedMicrochip2.gif);
+    background-size: cover;
+
+    transform: skewY(-7deg);
+    margin-top: -10.5rem;
+
+    & > *{
+
+        transform: skewY(7deg);
+    }
+
+    @include respond(tab-port){
+        padding: 10rem 0;
+    }
+}
+
+.section-tours {
+
+    background: $color-grey-light-1;
+    padding: 25rem 0 50rem 0;                               /* 25 on the top, 0 on the right side, bottom 50 rem, and 0 on the left   /* 25 on the top and bottom, where the zero is, I guess. */ 
+    margin-top: -10rem;
+}

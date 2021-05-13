@@ -1,0 +1,55 @@
+
+@keyframes moveInLeft{                      /* These types of animations are more complex, Use @keyframes rule, then name it. You can then dictate what you want it to do at any given time on animation. So you start with 0% and the finish is at 100% which is when the animation finishes.*/
+
+    0%{                                     /* For browser performance what you really ever want to do is only two different properties. One is Opacity and the other is the Transform property */
+        opacity: 0;                         /* How do we want the element to look like at the beggining? We want it to be invisible, Opacity: 0;  */
+        transform: translateX(-10rem);      /* You want it to start more on the left than in the center so therefore, you have to negative the pixels on the X axis.  */
+    }
+
+    80%{
+        transform: translateX(1rem);        /* My name at the top start at -100px but ends a little further to the right of the original center, so therefore adding an increase of 120 (20px) from -100px initiitaion. */
+    }
+
+    100%{
+        opacity: 1;                         /* You want it to reappear at the end so you make Opacity: 1, so that it can reappear. */
+        transform: translate(0);            /* How do you want it to look like at 100? You want it back in the middle where it was so therefore translate(0); */
+    }
+}
+
+
+@keyframes moveInRight{                     /* You can grow crazy with rotations and other movements */
+
+    0%{                     
+        opacity: 0;         
+        transform: translateX(10rem);       /* To create the opposite animation for the bottom text, just reverse it so basically you want to start at 100px, a positive which moves right on X */
+    }
+
+    80%{
+        transform: translateX(-1rem);        /* Also, nudging it an extra 10 a little to the left so itll have that bounce outwards */
+    }
+
+    100%{
+        opacity: 1;
+        transform: translate(0);        
+        
+    }
+}
+
+
+
+/* Button animations: */
+
+@keyframes moveInBottom{              /* This is for the button that appears coming up when you reload with the text */ 
+
+    0%{                     
+        opacity: 0;         
+        transform: translateY(3rem);  /* It is positive because on the Y scale it goes top down, so if you want to move down, it is a positive value */
+    }
+
+    
+    100%{
+        opacity: 1;
+        transform: translate(0);        
+        
+    }
+}

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  
+<head>
+        <meta charset = "UTF-8">
+        <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel = "stylesheet"> <!--this is for the text that we are using on the header, the numbers are the different weight of the text you import-->
+
+        <link rel="stylesheet" href="css/icon-fonts.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+
+        <title>Miguel Colmenares | Front End Dev</title>
+    </head>
+
+
+    <body>
+        <header class="header">
+            <div class = "header__logo-box"> <!-- This is for the logo, a different div for it. Next line, its img source, alt = "describes image for SIO (search image optimization) Logo" aka what will show, if image doesnt show; and the class for it is "logo"--> 
+                                             <!-- We must make our components into BEM structure to make full components and dependeable elements. "header" is the block and "logo-box" is the element-->
+                                             <!-- "logo-box" is part of the header but it is not a standalone meaning. So we must add header to it as such : "header__logo-box"-->
+
+
+                <img src="img/360_F_345523071_KOKvRaVfbpZTm2Oq9ghMgBwoDGtrXQ5i.jpg"alt="Logo" class="header__logo"> <!-- < img src = --> <!--added "header__logo" for BEM-->
+            </div>
+
+
+            <div class="header__text-box"> <!--Create a new div container in order to encapsulate the 2 texts and the button so they can all be centered.-->
+                <h1 class="heading-primary"> <!--the h1, (Meant for you to put your title in there.) is IMPORTANT because its supposed to be the most important text, or TITLE, and is what tells SEARCH ENGINES what your website is about. -->
+                                             <!-- we dont need to put "header" extension on this because we can use this header somewhere else like on another page-->
+                     <span class = "heading-primary--main">MIGUEL COLMENARES</span> <!--span is used to so you can style two texts differently.-->
+                                                                                  <!-- "heading-primary-main" turns to "heading-primary--main" with to dashes becuase it is a MODIFIER -->
+                    <span class = "heading-primary--sub"> FRONT END DEVEOLPMENT  </span> <!--We dont want to do and h2 because you dont want your title to just be "Outdoors" so we must seperate those two using the <span> element. -->
+                 </h1>                                                                   <!-- add modifer --    -->
+
+                    <a href ="#section-tours" class="btn btn--white btn--animated">PROJECTS</a> <!-- This is the button, I think that it is divided into the 'btn' and 'btn-white' classes. Btn for all buttons and btn-white for the white/green color scheme--> <!--You can add extra class names (btn-animated was made last, because their will be several buttons except this one has a unique animation not like the others.-->
+            </div>                                                               <!-- A button is of course a standalone component, so we can cosider it a block in the BEM notation, because we are going to use this button throughout the entire page-->
+        </header>                                                                <!-- We add however, -- to btn--white and btn--animated because these create different versions of buttons, different animations of a button-->
+    
+    
+        
+        
+        <main>                                                                   <!-- Where the rest, besides the footer, of the website will be contained, the main section.-->
+
+           
+            <section class="section-about">                                      <!-- Start with styling this section, you put it in the _home.scss because it is a style very specific to the "homepage" (the landing page we are coding). No where else, even if it grows, there will not be another about section. -->
+
+
+                <div class="u-center-text u-margin-bottom-big">                   <!-- This both are two seperate - UTILITY it is a single wrapper that does basicvally one thing to an elements and its components, in this case is to center the H2 text. Also, you dont create another wrapper class in this case because we want to reuse these properties somewhere else. -->
+                     <h2 class="heading-secondary">                             <!-- This is for the text -->
+                        Front End Focused With Full Stack Experience
+                     </h2>
+                </div>
+           
+                <div class="row">                                               <!-- Copy col-1-of-2-->
+                    <div class= "col-1-of-2">
+                        <h3 class="heading-tertiary u-margin-bottom-small"> MOTIVATED GRADUATE STUDENT</h3>
+                             <p class="paragraph">
+                                Current Information Technology graduate student at Kennesaw State University with a high level of interest and motivation to learn new technolgoes and create modern full stack applications.    
+                             </p>
+                        
+                        <h3 class="heading-tertiary u-margin-bottom-small"> CONSTANT APPLICATION OF NEW TECH SKILLS </h3>
+                             <p class="paragraph">
+                                 Having taken on both student and personal side projects, I have worked on my own and alongside others using Agile collaboration in order to accomplish projects that have incorported front end and back end technolgies.   
+                            </p>
+
+                        <!-- <a href="#" class="btn-text">Learn More &rarr;</a>   -->                        <!-- This property is the button property inside this dev because its with this first column, &rarr is the code to create a little arrow, there are also other CSS codes online for this tyoe of symbols -->
+                                                                                                <!-- Button styling in _button.scss-->
+                    </div>
+                        
+    
+                    <div class= "col-1-of-2">
+                      
+                        <div class="composition">
+                             <img src="img/Unknown.png" alt="Photo 1" class="composition__photo composition__photo--p1">               <!-- These classes are longer (BEM) Block, element, Modifier  -->
+                             <img src="img/angular.png" alt="Photo 2" class="composition__photo composition__photo--p2">
+                             <img src="img/aps,504x498,small,transparent-pad,600x600,f8f8f8.u1.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                
+                         </div>
+                     </div>
+                 </div>
+            </section>
+
+           
+            <section class="section-features">                                                 <!-- New section features -->
+
+
+                <div class="row">
+                    <div class="col-1-of-4">                                                    <!-- Create a column for features box -->
+                        <div class="feature-box">
+
+                            <i class="feature-box__icon icon-basic-display u-margin-bottom-small"></i>                  <!-- use i for Icon class-->
+                            <h3 class="heading-tertiary u-margin-bottom-small">FRONT END</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
+                            <div class="feature-box__list">
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS | SASS</li>
+                                    <li>JavaScript | Angular</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="col-1-of-4">                                                    <!-- Create a column for features box -->
+                        <div class="feature-box">
+
+                            <i class="feature-box__icon icon-basic-server-upload u-margin-bottom-small"></i>                  <!-- use i for Icon class-->
+                            <h3 class="heading-tertiary u-margin-bottom-small">Server</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
+                            <div class="feature-box__list">
+                                <ul>
+                                    <li>Express</li>
+                                    <li>NodeJS</li>
+                                    <li>Python</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-1-of-4">                                                    <!-- Create a column for features box -->
+                        <div class="feature-box">
+
+                            <i class="feature-box__icon icon-basic-world u-margin-bottom-small"></i>                  <!-- use i for Icon class-->
+                            <h3 class="heading-tertiary u-margin-bottom-small">Database</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
+                            <div class="feature-box__list">
+                                <ul>
+                                    <li>SQL</li>
+                                    <li>mySQL</li>
+                                    <li>MongoDB</li>
+                                    
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+
+                    <div class="col-1-of-4">                                                    <!-- Create a column for features box -->
+                        <div class="feature-box">
+
+                            <i class="feature-box__icon icon-basic-server-cloud u-margin-bottom-small"></i>                  <!-- use i for Icon class-->
+                            <h3 class="heading-tertiary u-margin-bottom-small">Deployment</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
+                            <div class="feature-box__list">
+                                <ul>
+                                    <li>Git</li>
+                                    <li>GitHub</li>
+                                    <li>AWS</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+        
+        
+
+            <section class="section-tours" id="section-tours">
+                <div class="u-center-text u-margin-bottom-big">                   <!-- This both are two seperate - UTILITY it is a single wrapper that does basicvally one thing to an elements and its components, in this case is to center the H2 text. Also, you dont create another wrapper class in this case because we want to reuse these properties somewhere else. -->
+                    <h2 class="heading-secondary">                                <!-- This is for the text -->
+                       Portfolio Projects
+                    </h2>
+               </div>
+          
+
+               
+               <div class="row">
+                   
+                     <div class= "col-1-of-3">                                          <!-- This is for the tours/project section-->
+                        <div class="card">
+                            <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                                <div class="card__picture card__picture--1">            <!-- Modifier for each card -->
+                                        &nbsp;                                          <!--Empty space command-->
+                                    </div>  
+                               
+                                 <h4 class="card__heading">                              <!-- We use h4 here for the new text styling-->
+                                        Portfolio
+                                 </h4>
+                                <div class="card__details">
+                                        <ul>
+                                            <li>HTML</li>                                <!-- List for all of the cards -->
+                                            <li>CSS</li>
+                                            <li>SASS</li>
+                                            <li>JavaScript</li>    
+                                        </ul>
+                                     </div>
+                        </div>  
+                            <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                                <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                                    <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                        <p class="card__price-value">Portfolio</p>
+                                        <p class="card__price-value">Code</p>
+                                    </div>
+                                        <a href="https://github.com/mac9192/Portfolio" class="btn btn--white">Github</a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class= "col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                                <div class="card__picture card__picture--2">            <!-- Modifier for each card -->
+                                        &nbsp;                                          <!--Empty space command-->
+                                    </div>  
+                               
+                                 <h4 class="card__heading">                              <!-- We use h4 here for the new text styling-->
+                                    Covid Travel
+                                 </h4>
+                                <div class="card__details">
+                                        <ul>
+                                            <li>Angular</li>                                <!-- List for all of the cards -->
+                                            <li>Node</li>
+                                            <li>Express</li>
+                                            <li>MongoDB</li>    
+                                        </ul>
+                                     </div>
+                        </div>  
+                            <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                                <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                                    <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                        <p class="card__price-value">Covid Planner </p>
+                                        <p class="card__price-value">Video</p>
+                                    </div>
+                                        <a href="https://youtu.be/qAIiqltN8m4" class="btn btn--white">YouTube</a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class= "col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                                <div class="card__picture card__picture--3">            <!-- Modifier for each card -->
+                                        &nbsp;                                          <!--Empty space command-->
+                                    </div>  
+                               
+                                 <h4 class="card__heading">                              <!-- We use h4 here for the new text styling-->
+                                    Contacts App
+                                 </h4>
+                                <div class="card__details">
+                                        <ul>
+                                            <li style="visibility: hidden;">HTML</li>                                <!-- List for all of the cards -->
+                                            <li>Python</li>
+                                            <li>CRUD</li>
+                                    
+                                            <li style="visibility: hidden;">JavaScript</li>    
+                                        </ul>
+                                     </div>
+                        </div>  
+                            <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                                <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                                    <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                        <p class="card__price-value">Contacts</p>
+                                        <p class="card__price-value">Code</p>
+                                    </div>
+                                        <a href="https://github.com/mac9192/Contacts-App" class="btn btn--white">GITHUB</a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                
+                </div>
+
+        </section>
+        
+    </main>
+
+    <footer class="footer">
+        <div class="footer__logo-box">
+            <img src="img/360_F_345523071_KOKvRaVfbpZTm2Oq9ghMgBwoDGtrXQ5i.jpg" alt="Full logo" class="footer__logo">
+        </div>
+        <div class="row">
+            <div class="col-1-of-2">
+               
+                <div class="footer__navigation">
+                    <ul class="footer__list">
+                        <li class="footer__item"><a href="https://github.com/mac9192" class="footer__link">GitHub</a></li>
+                        <li class="footer__item"><a href="https://www.linkedin.com/in/miguel-colmenares-a32537119" class="footer__link">LinkedIn</a></li>
+                        <li class="footer__item"><a href="https://youtu.be/qAIiqltN8m4" class="footer__link">YouTube</a></li>
+                        <li class="footer__item"><a href="https://www.linkedin.com/in/miguel-colmenares-a32537119/detail/treasury/position:1780413293/?entityUrn=urn%3Ali%3Afsd_profileTreasuryMedia%3A(ACoAAB1x9AYBl1-y2NCfMB4Yn89W6QlqH1wz1_E%2C1635457191284)&section=position%3A1780413293&treasuryCount=1" class="footer__link">Resume</a></li>
+                    </ul>
+              
+                </div>
+            
+            </div>
+           
+            <div class="col-1-of-2">
+
+              <p class="footer__copyright">
+                    Portfolio showcasing projects created by <a href="#" class="footer__link"> Miguel Colmenares.</a> <!--for his online course <a href="#" class="footer__link">Advanced CSS and Sass</a>. Copyright &copy; by Miguel Colmenares. -->
+              </p>   
+
+            </div>
+        </div>
+    </footer>
+   
+        
+        
+    <!-- These are the colums grids. When we use one we can just copy them. 
+        <section class="gird-test">
+
+            <div class="row">
+                    <div class= "col-1-of-2">
+                        Col 1 of 2
+                    </div>
+                    <div class= "col-1-of-2">
+                        Col 1 of 2
+                    </div>
+            </div>
+           
+            <div class="row">
+                <div class= "col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <div class= "col-1-of-3">
+                    Col 1 of 3
+                </div>
+                <div class= "col-1-of-3">
+                    Col 1 of 3
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class= "col-1-of-3">
+                        Col 1 of 3
+                    </div>
+                    <div class= "col-2-of-3">
+                        Col 2 of 3
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class= "col-1-of-4">
+                        Col 1 of 4
+                    </div>
+                    <div class= "col-1-of-4">
+                        Col 1 of 4
+                    </div>
+                    <div class= "col-1-of-4">
+                        Col 1 of 4
+                    </div>
+                    <div class= "col-1-of-4">
+                        Col 1 of 4
+                    </div>
+                </div>
+       
+                 <div class="row">
+                    <div class= "col-1-of-4">
+                        Col 1 of 4
+                    </div>
+                    <div class= "col-1-of-4">
+                        Col 1 of 4
+                    </div>
+                    <div class= "col-2-of-4">
+                        Col 2 of 4
+                   </div>
+                 </div>
+                   
+                 <div class="row">                       We alter this so that it can have no margin at the bottom
+                    <div class= "col-1-of-4">
+                        Col 1 of 4
+                    </div>
+                    <div class= "col-3-of-4">
+                        Col 3 of 4
+                    </div>
+                    
+                </div>
+
+        </section>       
+                 
+                 
+
+
+           
+           
+             </div>
+        </section>
+    -->
+
+
+
+
+
+
+    </body>
+     
+     
+     
+</html>
