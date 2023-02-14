@@ -11,9 +11,9 @@
 
         <link rel="stylesheet" href="css/icon-fonts.css">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <link rel="shortcut icon" type="image/png" src="img/360_F_345523071_KOKvRaVfbpZTm2Oq9ghMgBwoDGtrXQ5i.jpg">
 
-        <title>Miguel Colmenares | Front End Dev</title>
+        <title>Miguel Colmenares | Web Development</title>
     </head>
 
 
@@ -33,7 +33,7 @@
                                              <!-- we dont need to put "header" extension on this because we can use this header somewhere else like on another page-->
                      <span class = "heading-primary--main">MIGUEL COLMENARES</span> <!--span is used to so you can style two texts differently.-->
                                                                                   <!-- "heading-primary-main" turns to "heading-primary--main" with to dashes becuase it is a MODIFIER -->
-                    <span class = "heading-primary--sub"> FRONT END DEVEOLPMENT  </span> <!--We dont want to do and h2 because you dont want your title to just be "Outdoors" so we must seperate those two using the <span> element. -->
+                    <span class = "heading-primary--sub"> WEB DEVEOLPMENT  </span> <!--We dont want to do and h2 because you dont want your title to just be "Outdoors" so we must seperate those two using the <span> element. -->
                  </h1>                                                                   <!-- add modifer --    -->
 
                     <a href ="#section-tours" class="btn btn--white btn--animated">PROJECTS</a> <!-- This is the button, I think that it is divided into the 'btn' and 'btn-white' classes. Btn for all buttons and btn-white for the white/green color scheme--> <!--You can add extra class names (btn-animated was made last, because their will be several buttons except this one has a unique animation not like the others.-->
@@ -49,35 +49,38 @@
             <section class="section-about">                                      <!-- Start with styling this section, you put it in the _home.scss because it is a style very specific to the "homepage" (the landing page we are coding). No where else, even if it grows, there will not be another about section. -->
 
 
-                <div class="u-center-text u-margin-bottom-big">                   <!-- This both are two seperate - UTILITY it is a single wrapper that does basicvally one thing to an elements and its components, in this case is to center the H2 text. Also, you dont create another wrapper class in this case because we want to reuse these properties somewhere else. -->
+                <div class="u-center-text u-margin-bottom-big">                  <!-- This both are two seperate - UTILITY it is a single wrapper that does basicvally one thing to an elements and its components, in this case is to center the H2 text. Also, you dont create another wrapper class in this case because we want to reuse these properties somewhere else. -->
                      <h2 class="heading-secondary">                             <!-- This is for the text -->
-                        Front End Focused With Full Stack Experience
+                        Front End Focused With Blockchain Experience
                      </h2>
                 </div>
            
                 <div class="row">                                               <!-- Copy col-1-of-2-->
                     <div class= "col-1-of-2">
-                        <h3 class="heading-tertiary u-margin-bottom-small"> MOTIVATED GRADUATE STUDENT</h3>
+                        <h3 class="heading-tertiary u-margin-bottom-small"> MOTIVATED FREELANCER </h3>
                              <p class="paragraph">
-                                Current Information Technology graduate student at Kennesaw State University with a high level of interest and motivation to learn new technolgoes and create modern full stack applications.    
+                                Current freelancer and recent graduate student from Kennesaw State University 
+                            with a high level of interest and motivation to take on new challenges and projects.    
                              </p>
                         
                         <h3 class="heading-tertiary u-margin-bottom-small"> CONSTANT APPLICATION OF NEW TECH SKILLS </h3>
                              <p class="paragraph">
-                                 Having taken on both student and personal side projects, I have worked on my own and alongside others using Agile collaboration in order to accomplish projects that have incorported front end and back end technolgies.   
+                                 I have worked on business websites, building APIs, server setups, and blockchain startups. I am always looking for the next opportunity to learn and provide value.
+                                  
                             </p>
 
                         <!-- <a href="#" class="btn-text">Learn More &rarr;</a>   -->                        <!-- This property is the button property inside this dev because its with this first column, &rarr is the code to create a little arrow, there are also other CSS codes online for this tyoe of symbols -->
-                                                                                                <!-- Button styling in _button.scss-->
+                                                                                                             <!-- Button styling in _button.scss -->
                     </div>
                         
     
                     <div class= "col-1-of-2">
                       
                         <div class="composition">
-                             <img src="img/Unknown.png" alt="Photo 1" class="composition__photo composition__photo--p1">               <!-- These classes are longer (BEM) Block, element, Modifier  -->
-                             <img src="img/angular.png" alt="Photo 2" class="composition__photo composition__photo--p2">
-                             <img src="img/aps,504x498,small,transparent-pad,600x600,f8f8f8.u1.jpg" alt="Photo 3" class="composition__photo composition__photo--p3">
+                             <img src="img/cosmoss.png" alt="Photo 1" class="composition__photo composition__photo--p1">               <!-- These classes are longer (BEM) Block, element, Modifier  -->
+                             <img src="img/react.jpeg" alt="Photo 2" class="composition__photo composition__photo--p2">
+                             <img src="img/Unknown.png" alt="Photo 3" class="composition__photo composition__photo--p3">
+                             
                 
                          </div>
                      </div>
@@ -96,9 +99,11 @@
                             <h3 class="heading-tertiary u-margin-bottom-small">FRONT END</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
                             <div class="feature-box__list">
                                 <ul>
-                                    <li>HTML</li>
-                                    <li>CSS | SASS</li>
-                                    <li>JavaScript | Angular</li>
+                                    <li>React</li>
+                                    <li>HTML | CSS</li>
+                                    <li>Bootstrap | Tailwind CSS</li>
+                                   
+                                    
                                     
                                 </ul>
                             </div>
@@ -111,12 +116,12 @@
                         <div class="feature-box">
 
                             <i class="feature-box__icon icon-basic-server-upload u-margin-bottom-small"></i>                  <!-- use i for Icon class-->
-                            <h3 class="heading-tertiary u-margin-bottom-small">Server</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
+                            <h3 class="heading-tertiary u-margin-bottom-small">Backend</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
                             <div class="feature-box__list">
                                 <ul>
-                                    <li>Express</li>
-                                    <li>NodeJS</li>
-                                    <li>Python</li>
+                                    <li>JavaScript</li>
+                                    <li>NodeJS | Express</li>
+                                    <li>NextJS | GraphQL</li>
                                 </ul>
                             </div>
                             
@@ -127,12 +132,12 @@
                         <div class="feature-box">
 
                             <i class="feature-box__icon icon-basic-world u-margin-bottom-small"></i>                  <!-- use i for Icon class-->
-                            <h3 class="heading-tertiary u-margin-bottom-small">Database</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
+                            <h3 class="heading-tertiary u-margin-bottom-small">Blockchain</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
                             <div class="feature-box__list">
                                 <ul>
-                                    <li>SQL</li>
-                                    <li>mySQL</li>
-                                    <li>MongoDB</li>
+                                    <li>Cosmos</li>
+                                    <li>CosmWasm</li>
+                                    <li>Validator</li>
                                     
                                 </ul>
                             </div>
@@ -145,17 +150,18 @@
                         <div class="feature-box">
 
                             <i class="feature-box__icon icon-basic-server-cloud u-margin-bottom-small"></i>                  <!-- use i for Icon class-->
-                            <h3 class="heading-tertiary u-margin-bottom-small">Deployment</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
+                            <h3 class="heading-tertiary u-margin-bottom-small">Server</h3>       <!--Adding a margin bottom, space between the header and paragraph-->
                             <div class="feature-box__list">
                                 <ul>
-                                    <li>Git</li>
-                                    <li>GitHub</li>
-                                    <li>AWS</li>
+                                    <li>AWS | Linode</li>
+                                    <li>Linux</li>
+                                    <li>Tendermint</li>
                                 </ul>
                             </div>
                             
                         </div>
                     </div>
+                    
                 </div>
             </section>
         
@@ -168,104 +174,212 @@
                     </h2>
                </div>
           
-
+  
+               <div class="row">
+                   
+                <div class= "col-1-of-3">                                          <!-- This is for the tours/project section-->
+                   <div class="card">
+                       <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                           <div class="card__picture card__picture--1">            <!-- Modifier for each card -->
+                                   &nbsp;                                          <!--Empty space command-->
+                               </div>  
+                          
+                            <h4 class="card__heading" style="text-transform: none";>                              <!-- We use h4 here for the new text styling-->
+                                   Portfolio
+                            </h4>
+                           <div class="card__details">
+                                   <ul>
+                                       <li>HTML</li>                                <!-- List for all of the cards -->
+                                       <li>CSS</li>
+                                       <li>SASS</li>
+                                       <li>JavaScript</li>    
+                                   </ul>
+                                </div>
+                   </div>  
+                       <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                           <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                               <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                   <p class="card__price-value">Portfolio</p>
+                                   <p class="card__price-value">Code</p>
+                               </div>
+                                   <a href="https://github.com/mac9192/Portfolio" class="btn btn--white">Github</a>
+                           </div>
+                       </div>  
+                   </div>
+               </div>
+               
+               
+               
+               <div class= "col-1-of-3">
+                   <div class="card">
+                       <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                           <div class="card__picture card__picture--2">            <!-- Modifier for each card -->
+                                   &nbsp;                                          <!--Empty space command-->
+                               </div>  
+                          
+                            <h4 class="card__heading" style="text-transform: none;">                              <!-- We use h4 here for the new text styling-->
+                               Modern Hip Hop Blog
+                            </h4>
+                           <div class="card__details">
+                                   <ul>
+                                       <li>Next.js</li>                                <!-- List for all of the cards -->
+                                       <li>GraphCMS</li>
+                                       <li>GraphQL</li>
+                                       <li>Tailwind</li>    
+                                   </ul>
+                                </div>
+                   </div>  
+                       <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                           <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                               <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                   <p class="card__price-value">Hip Hop Blog </p>
+                                  
+                               </div>
+                                   <a href="https://modernhiphop.vercel.app" class="btn btn--white">Hip Hop Blog</a>
+                           </div>
+                       </div>  
+                   </div>
+               </div>
+               <div class= "col-1-of-3">
+                   <div class="card">
+                       <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                           <div class="card__picture card__picture--3">            <!-- Modifier for each card -->
+                                   &nbsp;                                          <!--Empty space command-->
+                               </div>  
+                          
+                            <h4 class="card__heading" style="text-transform: none;">                              <!-- We use h4 here for the new text styling-->
+                               Gym Warrior
+                            </h4>
+                           <div class="card__details">
+                                   <ul>
+                                                                   <!-- List for all of the cards -->
+                                       <li>Rapid API</li>
+                                       <li>React</li>
+                                       <li>Material UI</li>
+                                       <li>JavaScript</li>
+                                     
+                               
+                                       
+                                   </ul>
+                                </div>
+                   </div>  
+                       <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                           <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                               <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                   <p class="card__price-value">Gym Warrior</p>
+                                  
+                               </div>
+                                   <a href="https://gymwarrior.netlify.app" class="btn btn--white">Gym Warrior</a>
+                           </div>
+                       </div>  
+                       
+                   </div>
+               </div>
+               
+           
+           </div>
                
                <div class="row">
                    
                      <div class= "col-1-of-3">                                          <!-- This is for the tours/project section-->
                         <div class="card">
                             <div class="card__side card__side--front">                                    <!-- Front side of the card -->
-                                <div class="card__picture card__picture--1">            <!-- Modifier for each card -->
+                                <div class="card__picture card__picture--4">            <!-- Modifier for each card -->
                                         &nbsp;                                          <!--Empty space command-->
                                     </div>  
                                
-                                 <h4 class="card__heading">                              <!-- We use h4 here for the new text styling-->
-                                        Portfolio
+                                 <h4 class="card__heading" style="text-transform: none";>                              <!-- We use h4 here for the new text styling-->
+                                        CosmWasm FrontEnd Wallet
                                  </h4>
                                 <div class="card__details">
                                         <ul>
-                                            <li>HTML</li>                                <!-- List for all of the cards -->
+                                            <li>React</li>                                <!-- List for all of the cards -->
+                                            <li>JavaScript</li>
+                                            <li>CosmosKit</li>
+                                            <li>CosmWasm</li>    
+                                        </ul>
+                                     </div>
+                        </div>  
+                            <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                                <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                                    <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                        <p class="card__price-value">CosmWasm </p>
+                                        <p class="card__price-value">Keplr Wallet</p>
+                                    </div>
+                                        <a href="https://cosmology-xpt3.vercel.app" class="btn btn--white">Wallet App</a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class= "col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                                <div class="card__picture card__picture--5">            <!-- Modifier for each card -->
+                                        &nbsp;                                          <!--Empty space command-->
+                                    </div>  
+                               
+                                 <h4 class="card__heading" style="text-transform: none;">                              <!-- We use h4 here for the new text styling-->
+                                  Stargaze Validator (Testnet)
+                                 </h4>
+                                <div class="card__details">
+                                        <ul>
+                                            <li>Linode</li>                                <!-- List for all of the cards -->
+                                            <li>Tendermint</li>
+                                            <li>Linux</li>
+                                            <li>CosmWasm</li>
+                                             
+                                        </ul>
+                                     </div>
+                        </div>  
+                            <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
+                                <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
+                                    <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
+                                        <p class="card__price-value">Stargaze Testnet</p>
+                                        <p class="card__price-value">Validator</p>
+                                    </div>
+                                        <a href="https://testnet.keplr.app/chains/stargaze-testnet" class="btn btn--white">Validator</a>
+                                </div>
+                            </div>  
+                        </div>
+                    </div>
+                    <div class= "col-1-of-3">
+                        <div class="card">
+                            <div class="card__side card__side--front">                                    <!-- Front side of the card -->
+                                <div class="card__picture card__picture--6">            <!-- Modifier for each card -->
+                                        &nbsp;                                          <!--Empty space command-->
+                                    </div>  
+                               
+                                 <h4 class="card__heading" style="text-transform: none;" >                              <!-- We use h4 here for the new text styling-->
+                                    GenjutsuAtl
+                                 </h4>
+                                <div class="card__details">
+                                        <ul>
+                                                                    <!-- List for all of the cards -->
+                                            <li>HTML</li>
                                             <li>CSS</li>
-                                            <li>SASS</li>
-                                            <li>JavaScript</li>    
-                                        </ul>
-                                     </div>
-                        </div>  
-                            <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
-                                <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
-                                    <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
-                                        <p class="card__price-value">Portfolio</p>
-                                        <p class="card__price-value">Code</p>
-                                    </div>
-                                        <a href="https://github.com/mac9192/Portfolio" class="btn btn--white">Github</a>
-                                </div>
-                            </div>  
-                        </div>
-                    </div>
-                    
-                    
-                    
-                    <div class= "col-1-of-3">
-                        <div class="card">
-                            <div class="card__side card__side--front">                                    <!-- Front side of the card -->
-                                <div class="card__picture card__picture--2">            <!-- Modifier for each card -->
-                                        &nbsp;                                          <!--Empty space command-->
-                                    </div>  
-                               
-                                 <h4 class="card__heading">                              <!-- We use h4 here for the new text styling-->
-                                    Covid Travel
-                                 </h4>
-                                <div class="card__details">
-                                        <ul>
-                                            <li>Angular</li>                                <!-- List for all of the cards -->
-                                            <li>Node</li>
-                                            <li>Express</li>
-                                            <li>MongoDB</li>    
-                                        </ul>
-                                     </div>
-                        </div>  
-                            <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
-                                <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
-                                    <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
-                                        <p class="card__price-value">Covid Planner </p>
-                                        <p class="card__price-value">Video</p>
-                                    </div>
-                                        <a href="https://youtu.be/qAIiqltN8m4" class="btn btn--white">YouTube</a>
-                                </div>
-                            </div>  
-                        </div>
-                    </div>
-                    <div class= "col-1-of-3">
-                        <div class="card">
-                            <div class="card__side card__side--front">                                    <!-- Front side of the card -->
-                                <div class="card__picture card__picture--3">            <!-- Modifier for each card -->
-                                        &nbsp;                                          <!--Empty space command-->
-                                    </div>  
-                               
-                                 <h4 class="card__heading">                              <!-- We use h4 here for the new text styling-->
-                                    Contacts App
-                                 </h4>
-                                <div class="card__details">
-                                        <ul>
-                                            <li style="visibility: hidden;">HTML</li>                                <!-- List for all of the cards -->
-                                            <li>Python</li>
-                                            <li>CRUD</li>
+                                            <li>JavaScript</li>
+                                          
                                     
-                                            <li style="visibility: hidden;">JavaScript</li>    
+                                          
                                         </ul>
                                      </div>
                         </div>  
                             <div class="card__side card__side--back card__side--back-1">                                    <!-- Back side of the card, contains three modifiers for the cards and including the third modifier is for the card colors that differ -->
                                 <div class = "card__cta">                                                                         <!-- This is the "Call to Action" but really its the backside of the projects portfolio card-->
                                     <div class="card__price-box">                                                           <!-- This is for the back of the card where the price box will be-->
-                                        <p class="card__price-value">Contacts</p>
-                                        <p class="card__price-value">Code</p>
+                                        <p class="card__price-value">GenjutsuAtl</p>
+                                        <p class="card__price-value">Agency</p>
                                     </div>
-                                        <a href="https://github.com/mac9192/Contacts-App" class="btn btn--white">GITHUB</a>
+                                        <a href="https://genjutsuatl.com" class="btn btn--white">GenjutsuAtl</a>
                                 </div>
                             </div>  
+                            
                         </div>
                     </div>
+                    
                 
                 </div>
 
@@ -284,11 +398,11 @@
                     <ul class="footer__list">
                         <li class="footer__item"><a href="https://github.com/mac9192" class="footer__link">GitHub</a></li>
                         <li class="footer__item"><a href="https://www.linkedin.com/in/miguel-colmenares-a32537119" class="footer__link">LinkedIn</a></li>
-                        <li class="footer__item"><a href="https://youtu.be/qAIiqltN8m4" class="footer__link">YouTube</a></li>
-                        <li class="footer__item"><a href="https://www.linkedin.com/in/miguel-colmenares-a32537119/detail/treasury/position:1780413293/?entityUrn=urn%3Ali%3Afsd_profileTreasuryMedia%3A(ACoAAB1x9AYBl1-y2NCfMB4Yn89W6QlqH1wz1_E%2C1635457191284)&section=position%3A1780413293&treasuryCount=1" class="footer__link">Resume</a></li>
+                        
+                        <li class="footer__item"><a href="https://drive.google.com/file/d/1U4tsRZW1lxH3ewobBAKdkrI3tfjRtBAz/view?usp=sharing" class="footer__link">Resume</a></li>
                     </ul>
               
-                </div>
+                </div> 
             
             </div>
            

@@ -132,7 +132,7 @@ body {
   font-weight: 400;
   /* font-size: 16px;         Commented out, new html font-size made for REM to px conversion */
   line-height: 1.7;
-  color: gray;
+  color: grey;
   /* The white border around the webpage */
   /* HTML declarations changes this !!! = (declare font in the body element, it will be inherited by all child elements of the body.)*/ }
 
@@ -488,17 +488,23 @@ body {
       background-image: url(../img/ee2998cdb1cf6a6bf66bf65fe0076fd2.gif);
       /*Unsplash.com for pics*/ }
     .card__picture--2 {
-      background-image: url(../img/GloomyJovialElephantbeetle-max-1mb.gif); }
+      background-image: url(../img/modern_blog.gif); }
     .card__picture--3 {
-      background-image: url(../img/SpotlessGreatIvorybilledwoodpecker-max-1mb.gif); }
+      background-image: url(../img/gym.gif); }
+    .card__picture--4 {
+        background-image: url(../img/cos.gif); }
+        .card__picture--5 {
+          background-image: url(../img/valid.gif); }
+          .card__picture--6 {
+            background-image: url(../img/gen.gif); }
   .card__heading {
     /* This is for the card header */
     font-size: 2.8rem;
-    font-weight: 300;
+    font-weight: 500;
     text-transform: uppercase;
     text-align: right;
     /* Align text to the right, so that everything can be aligned nicely to the right */
-    color: white;
+    color:gray;
     position: absolute;
     /* The text is made position: absolute to bring it to the top of the image */
     top: 12rem;
